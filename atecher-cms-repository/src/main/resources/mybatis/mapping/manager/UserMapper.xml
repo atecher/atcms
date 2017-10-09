@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atecher.cms.mapper.manager.UserMapper">
+    <resultMap id="userMap" type="com.atecher.cms.model.manager.User">
+        <id column="user_id" property="userId" jdbcType="BIGINT"/>
+        <result column="nick_name" property="nickName" jdbcType="VARCHAR"/>
+        <result column="reg_email" property="regEmail" jdbcType="VARCHAR"/>
+        <result column="real_name" property="realName" jdbcType="VARCHAR"/>
+        <result column="sex" property="sex" jdbcType="CHAR"/>
+        <result column="birthday" property="birthday" jdbcType="DATE"/>
+        <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP"/>
+        <result column="logins" property="logins" jdbcType="INTEGER"/>
+        <result column="valid" property="valid" jdbcType="CHAR"/>
+        <result column="reg_time" property="regTime" jdbcType="TIMESTAMP"/>
+        <result column="summary" property="summary" jdbcType="VARCHAR"/>
+        <result column="avatar" property="avatar" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="user_column_list">
+    user_id, nick_name, reg_email, real_name, sex, birthday, last_login_time, 
+    logins, valid, reg_time, summary, avatar
+  </sql>
+    <select id="selectById" resultMap="userMap" parameterType="java.lang.Long">
+        select
+        <include refid="user_column_list"/>
+        from sys_user
+        where user_id = #{userId,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectUserForPage" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+        select
+        <include refid="user_column_list"/>
+        from sys_user
+        where valid='1'
+        <if test="search!= null">
+            and (nick_name like '%${search}%' or reg_email like '%${search}%')
+        </if>
+        <if test="sort != null">
+            order by ${sort} ${order}
+        </if>
+        limit #{start},#{limit}
+
+    </select>
+    <select id="selectUserForPageCount" parameterType="java.util.HashMap" resultType="int">
+        select count(1) from sys_user
+        where valid='1'
+        <if test="search!= null">
+            and (nick_name like '%${search}%' or reg_email like '%${search}%')
+        </if>
+    </select>
+
+    <insert id="insert" parameterType="com.atecher.cms.model.manager.User">
+    insert into sys_user (user_id, nick_name, reg_email, 
+      real_name, sex, birthday, last_login_time, 
+      logins, valid, reg_time, 
+      summary, avatar)
+    values (#{userId,jdbcType=BIGINT}, #{nickName,jdbcType=VARCHAR}, #{regEmail,jdbcType=VARCHAR}, 
+      #{realName,jdbcType=VARCHAR},  #{sex,jdbcType=CHAR}, #{birthday,jdbcType=DATE}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{logins,jdbcType=INTEGER}, #{valid,jdbcType=CHAR}, #{regTime,jdbcType=TIMESTAMP}, 
+      #{summary,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR})
+  </insert>
+
+
+    <update id="update" parameterType="com.atecher.cms.model.manager.User">
+    update sys_user
+    set nick_name = #{nickName,jdbcType=VARCHAR},
+      reg_email = #{regEmail,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      logins = #{logins,jdbcType=INTEGER},
+      valid = #{valid,jdbcType=CHAR},
+      reg_time = #{regTime,jdbcType=TIMESTAMP},
+      summary = #{summary,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+
+    <update id="disableUser" parameterType="long">
+		update sys_user set valid='0' where user_id=#{value}
+	</update>
+    <sql id="role_column_list">
+		SELECT t.role_id ,t.role_code,t.role_name ,t.role_desc 
+		FROM sys_role t where t.valid='1'
+	</sql>
+    <select id="selectOwnRoles" parameterType="long" resultType="java.util.HashMap">
+        <include refid="role_column_list"/>
+        and exists (select 1 from sys_user_role s where s.user_id=#{user_id} and s.role_id=t.role_id and
+        (s.session_type='0' or now() between s.valid_from and s.valid_to))
+    </select>
+    <select id="selectOtherRoles" parameterType="long" resultType="java.util.HashMap">
+        <include refid="role_column_list"/>
+        and not exists (select 1 from sys_user_role s where s.user_id=#{user_id} and s.role_id=t.role_id and
+        (s.session_type='0' or now() between s.valid_from and s.valid_to))
+    </select>
+    <delete id="deleteUserRoleByUserId" parameterType="long">
+		delete  from sys_user_role where user_id=#{user_id} 
+	</delete>
+    <insert id="insertUserRole" parameterType="com.atecher.cms.model.manager.UserRole">
+		insert into  sys_user_role(user_id,role_id,session_type,valid_from,valid_to) values(#{user_id},#{role_id},#{session_type},#{valid_from},#{valid_to}) 
+	</insert>
+    <update id="updateAvatar" parameterType="map">
+		update sys_user set avatar=#{avatar}
+		where user_id=#{user_id}
+	</update>
+    <update id="resetPassword" parameterType="com.atecher.cms.model.auth.AuthUser">
+		update sys_user_account set user_password=#{user_password} where user_id=#{user_id}
+	</update>
+</mapper>

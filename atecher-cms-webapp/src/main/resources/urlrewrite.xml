@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlrewrite use-query-string="false" use-context="false">
+	<outbound-rule encodefirst="true" enabled="true">
+		<from casesensitive="false">^(.*);jsessionid=.*$</from>
+		<to type="forward" last="false" qsappend="false">$1</to>
+	</outbound-rule>
+	<outbound-rule match-type="wildcard" enabled="true" encodefirst="false">
+		<from casesensitive="false">*;jsessionid=*</from>
+		<to type="forward" last="false" qsappend="false">$1</to>
+	</outbound-rule>
+	<rule>
+		<from>^/about$</from>
+		<to type="forward">/single?type=about</to>
+	</rule>
+	<rule>
+		<from>^/contact$</from>
+		<to type="forward">/single?type=contact</to>
+	</rule>
+	<rule>
+		<from>^/advert$</from>
+		<to type="forward">/single?type=advert</to>
+	</rule>
+	<rule>
+		<from>^/notice$</from>
+		<to type="forward">/single?type=notice</to>
+	</rule>
+</urlrewrite>

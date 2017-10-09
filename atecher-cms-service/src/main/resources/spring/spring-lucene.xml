@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="
+http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd
+">
+	<bean id="luceneDirectoryFactoryBean" class="com.atecher.cms.common.lucene.LuceneDirectoryFactoryBean">
+		<property name="indexPath" value="/home/index" />
+	</bean>
+	<bean  id="directory"  class="org.apache.lucene.store.FSDirectory" factory-bean="luceneDirectoryFactoryBean" factory-method="getFSDirectory"/>
+	<bean id="analyzer" class="org.apache.lucene.analysis.cn.smart.SmartChineseAnalyzer">
+		<constructor-arg value="true"></constructor-arg>
+	</bean>
+	<bean id="indexWriterConfig" class="org.apache.lucene.index.IndexWriterConfig">
+		<constructor-arg name="analyzer" ref="analyzer"/>
+	</bean>
+
+	<bean id="indexWriter" class="org.apache.lucene.index.IndexWriter">
+		<constructor-arg name="d" ref="directory" />
+		<constructor-arg name="conf" ref="indexWriterConfig" />
+	</bean>
+</beans>

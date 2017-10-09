@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr" class="uk-notouch">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Blog layout example - UIkit documentation</title>
+	<link rel="stylesheet" type="text/css" href="../asset/website/css/uikit.css">
+	<link rel="stylesheet" type="text/css" href="../asset/website/css/components/search.gradient.css">
+	<link rel="stylesheet" type="text/css" href="../asset/website/css/components/sticky.min.css">
+	<link rel="stylesheet" type="text/css" href="../asset/website/css/components/slideshow.min.css">
+	<link rel="stylesheet" type="text/css" href="../asset/website/css/components/slidenav.min.css">
+	<link rel="stylesheet" type="text/css" href="../asset/website/custom/custom.css">
+</head>
+<body>
+<header class="at-header " data-uk-sticky="{top:-200}">
+	<div class="uk-container uk-container-center">
+		<nav class="tm-navbar uk-navbar uk-navbar-attached uk-clearfix">
+			<a class="uk-navbar-brand uk-visible-large" href="layouts_frontpage.html">Brand</a>
+			<ul class="uk-navbar-nav uk-visible-large" >
+				<li class="uk-parent" data-uk-dropdown="{remaintime:100}"><a href="#">首页</a>
+					<div class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
+						<div class="uk-grid uk-dropdown-grid">
+							<div class="uk-width-1-1">
+								<ul class="uk-nav uk-nav-navbar">
+									<li><a href="#">子菜单</a></li>
+									<li><a href="#">子菜单</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="uk-parent" data-uk-dropdown="{remaintime:100}"><a
+						href="#">本站主题</a>
+					<div style=""
+						 class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
+						<div class="uk-grid uk-dropdown-grid">
+							<div class="uk-width-1-1">
+								<ul class="uk-nav uk-nav-navbar">
+									<li><a href="#">子菜单</a></li>
+									<li><a href="#">子菜单</a></li>
+								</ul>
+							</div>
+						</div>
+					</div></li>
+				<li class="uk-parent" data-uk-dropdown="{remaintime:100}"><a href="#">关于我 +</a>
+					<div style=""
+						 class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
+						<div class="uk-grid uk-dropdown-grid">
+							<div class="uk-width-1-1">
+								<ul class="uk-nav uk-nav-navbar">
+									<li><a href="#">子菜单</a></li>
+									<li><a href="#">子菜单</a></li>
+								</ul>
+							</div>
+						</div>
+					</div></li>
+				<li class="uk-parent" data-uk-dropdown="{remaintime:100}"><a
+						href="#">Github</a>
+					<div style=""
+						 class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
+						<div class="uk-grid uk-dropdown-grid">
+							<div class="uk-width-1-1">
+								<ul class="uk-nav uk-nav-navbar">
+									<li><a href="#">子菜单</a></li>
+									<li><a href="#">子菜单</a></li>
+								</ul>
+							</div>
+						</div>
+					</div></li>
+
+				<li class="" data-uk-dropdown="{remaintime:100}"><a href="#">菜单</a></li>
+				<li class="uk-parent uk-active" data-uk-dropdown="{remaintime:100}"><a href="#">菜单</a>
+					<div  class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
+						<div class="uk-grid uk-dropdown-grid">
+							<div class="uk-width-1-1">
+								<ul class="uk-nav uk-nav-navbar">
+									<li class="uk-active"><a href="#">子菜单</a></li>
+								</ul>
+							</div>
+						</div>
+					</div></li>
+			</ul>
+			<a href="#offcanvas" class="uk-navbar-toggle uk-hidden-large" data-uk-offcanvas=""></a>
+			<div class="uk-navbar-brand uk-navbar-center uk-hidden-large">Brand</div>
+			<div class="uk-navbar-content uk-visible-large uk-float-right" >
+				<form class="uk-search" id="search-3" action="#" method="get" role="search"  data-uk-search="{'source': 'http://yootheme.com/demo/themes/wordpress/2014/stage/wp-admin/admin-ajax.php?action=warp_search', 'param': 's', 'msgResultsHeader': 'Search Results', 'msgMoreResults': 'More Results', 'msgNoResults': 'No results found', flipDropdown: 1}">
+					<input class="uk-search-field" type="text" value="" name="s" placeholder="Search...">
+				</form>
+			</div>
+		</nav>
+	</div>
+</header>
+
+<div class="at-content">
+	<div class="uk-container uk-container-center uk-margin-top uk-margin-bottom">
+		<div class="uk-grid" >
+			<section class="uk-width-medium-1-1 uk-width-large-3-4">
+				<div class="custom-panel-title"><ul class="uk-breadcrumb"><li><span>您的位置：</span><a href="#">首页</a></li><li class="uk-active"><span>开源</span></li></ul></div>
+				<article class="uk-grid uk-article">
+					<div class="uk-width-1-1 uk-slidenav-position" data-uk-slideshow="{animation: 'random-fx',autoplay:true}">
+						<ul class="uk-slideshow uk-overlay-active" >
+							<li>
+
+								<img src="http://placehold.it/800x200" width="800" height="200" alt="">
+								<div class="uk-overlay-panel uk-overlay-background uk-overlay-fade uk-flex uk-flex-center uk-flex-middle uk-text-center">
+									<div>
+										<h2>不要浪费时间去写所谓的完美代码</h2>
+										<p>本文介绍Linux系统下常用的系统级命令，包括软硬件查看、修改命令，有CPU、内存、硬盘、网络、系统管理等命令。说明，所有命令是在Centos 6.4 64位的虚拟机系统进行测试的</p>
+										<button class="uk-button uk-button-primary sliderlink">阅读全部</button>
+									</div>
+								</div>
+							</li>
+							<li>
+
+								<img src="shade.jpg" width="800" height="200" alt="">
+								<div class="uk-overlay-panel uk-overlay-background uk-overlay-top uk-overlay-slide-top">
+									<h2>Overlay Top</h2>
+									<p>内存、硬盘、网络、系统管理等命令。说明，所有命令是在Centos 6.4 64位的虚拟机系统进行测试的。本文介绍的命令都会在此Centos下运行验证，内存、硬盘、网络、系统管理等命令。说明，所有命令是在Centos 6.4 64位的虚拟机系统进行测试的。本文介绍的命令都会在此Centos下运行验证，内存、硬盘、网络、系统管理等命令。说明，所有命令是在Centos 6.4 64位的虚拟机系统进行测试的。本文介绍的命令都会在此Centos下运行验证</p>
+									<button class="uk-button uk-button-primary sliderlink">阅读全部</button>
+								</div>
+
+							</li>
+						</ul>
+						<a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
+						<a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next"></a>
+					</div>
+				</article>
+				<article class="uk-grid uk-article" >
+					<div class="uk-width-medium-1-5 uk-width-small-1-3 sidebar">
+						<img width="660" height="400" src="http://img.ui.cn/data/file/5/3/3/450335.png" alt="">
+					</div>
+					<div class="uk-width-medium-4-5 uk-width-small-2-3">
+						<h2><a class="at-tag">技术分享</a><a>不要浪费时间去写所谓的完美代码</a></h2>
+						<p class="summary">本文介绍Linux系统下常用的系统级命令，包括软硬件查看、修改命令，有CPU、内存、硬盘、网络、系统管理等命令。说明，所有命令是在Centos 6.4 64位的虚拟机系统进行测试的。本文介绍的命令都会在此Centos下运行验证（也有部分命令会在suse/ubuntu系统里测试的，会做特明说明），但运行结果就不再列出了。</p>
+						<p class="uk-article-meta"><span><i class="uk-icon-user"></i>管理员</span> <span><i class="uk-icon-calendar"></i>2015.01.29</span> <span><i class="uk-icon-eye"></i>191次阅读</span></p>
+					</div>
+				</article>
+				<hr class="uk-grid-divider">
+				<article class="uk-grid uk-article" >
+					<div class="uk-width-medium-1-5 uk-width-small-1-3">
+						<img width="320" height="240" src="http://img.ui.cn/data/file/5/3/3/450335.png" alt="">
+					</div>
+					<div class="uk-width-medium-4-5 uk-width-small-2-3">
+						<h2>不要浪费时间去写所谓的完美代码</h2>
+						<p class="summary">本文介绍Linux系统下常用的系统级命令，包括软硬件查看、修改命令，有CPU、内存、硬盘、网络、系统管理等命令。说明，所有命令是在Centos 6.4 64位的虚拟机系统进行测试的。本文介绍的命令都会在此Centos下运行验证（也有部分命令会在suse/ubuntu系统里测试的，会做特明说明），但运行结果就不再列出了。</p>
+						<p class="uk-article-meta"><span><i class="uk-icon-user"></i>管理员</span> <span><i class="uk-icon-calendar"></i>2015.01.29</span> <span><i class="uk-icon-eye"></i>191次阅读</span></p>
+					</div>
+				</article>
+				<hr class="uk-grid-divider">
+				<article class="uk-grid uk-article" >
+					<div class="uk-width-medium-1-5 uk-width-small-1-3">
+						<img width="320" height="240" src="http://img.ui.cn/data/file/5/3/3/450335.png" alt="">
+					</div>
+					<div class="uk-width-medium-4-5 uk-width-small-2-3">
+						<h2>	不要浪费时间去写所谓的完美代码</h2>
+						<p class="summary">本文介绍Linux系统下常用的系统级命令，包括软硬件查看、修改命令，有CPU、内存、硬盘、网络、系统管理等命令。说明，所有命令是在Centos 6.4 64位的虚拟机系统进行测试的。本文介绍的命令都会在此Centos下运行验证（也有部分命令会在suse/ubuntu系统里测试的，会做特明说明），但运行结果就不再列出了。</p>
+						<p class="uk-article-meta"><span><i class="uk-icon-user"></i>管理员</span> <span><i class="uk-icon-calendar"></i>2015.01.29</span> <span><i class="uk-icon-eye"></i>191次阅读</span></p>
+					</div>
+				</article>
+				<hr class="uk-grid-divider">
+				<article class="uk-grid uk-article" >
+					<div class="uk-width-medium-1-5 uk-width-small-1-3">
+						<img width="320" height="240" src="http://img.ui.cn/data/file/5/3/3/450335.png" alt="">
+					</div>
+					<div class="uk-width-medium-4-5 uk-width-small-2-3">
+						<h2>	不要浪费时间去写所谓的完美代码</h2>
+						<p class="summary">本文介绍Linux系统下常用的系统级命令，包括软硬件查看、修改命令，有CPU、内存、硬盘、网络、系统管理等命令。说明，所有命令是在Centos 6.4 64位的虚拟机系统进行测试的。本文介绍的命令都会在此Centos下运行验证（也有部分命令会在suse/ubuntu系统里测试的，会做特明说明），但运行结果就不再列出了。</p>
+						<p class="uk-article-meta"><span><i class="uk-icon-user"></i>管理员</span> <span><i class="uk-icon-calendar"></i>2015.01.29</span> <span><i class="uk-icon-eye"></i>191次阅读</span></p>
+					</div>
+				</article>
+				<hr class="uk-grid-divider">
+				<article class="uk-grid uk-article" >
+					<div class="uk-width-medium-1-5 uk-width-small-1-3">
+						<img width="320" height="240" src="http://img.ui.cn/data/file/5/3/3/450335.png" alt="">
+					</div>
+					<div class="uk-width-medium-4-5 uk-width-small-2-3">
+						<h2>	不要浪费时间去写所谓的完美代码</h2>
+						<p class="summary">本文介绍Linux系统下常用的系统级命令，包括软硬件查看、修改命令，有CPU、内存、硬盘、网络、系统管理等命令。说明，所有命令是在Centos 6.4 64位的虚拟机系统进行测试的。本文介绍的命令都会在此Centos下运行验证（也有部分命令会在suse/ubuntu系统里测试的，会做特明说明），但运行结果就不再列出了。</p>
+						<p class="uk-article-meta"><span><i class="uk-icon-user"></i>管理员</span> <span><i class="uk-icon-calendar"></i>2015.01.29</span> <span><i class="uk-icon-eye"></i>191次阅读</span></p>
+					</div>
+				</article>
+				<hr class="uk-grid-divider">
+				<article class="uk-grid uk-article" >
+					<div class="uk-width-medium-1-5 uk-width-small-1-3">
+						<img width="320" height="240" src="http://img.ui.cn/data/file/5/3/3/450335.png" alt="">
+					</div>
+					<div class="uk-width-medium-4-5 uk-width-small-2-3">
+						<h2>	不要浪费时间去写所谓的完美代码</h2>
+						<p class="summary">本文介绍Linux系统下常用的系统级命令，包括软硬件查看、修改命令，有CPU、内存、硬盘、网络、系统管理等命令。说明，所有命令是在Centos 6.4 64位的虚拟机系统进行测试的。本文介绍的命令都会在此Centos下运行验证（也有部分命令会在suse/ubuntu系统里测试的，会做特明说明），但运行结果就不再列出了。</p>
+						<p class="uk-article-meta"><span><i class="uk-icon-user"></i>管理员</span> <span><i class="uk-icon-calendar"></i>2015.01.29</span> <span><i class="uk-icon-eye"></i>191次阅读</span></p>
+					</div>
+				</article>
+				<hr class="uk-grid-divider">
+				<ul class="uk-pagination uk-margin-bottom">
+					<li><a style="font-size: 18px;"><i class="uk-icon-angle-left"></i></a></li>
+					<li class="uk-active"><span>1</span></li>
+					<li><a href="http://www.getuikit.net/docs/layouts_blog.html#">2</a></li>
+					<li><a href="http://www.getuikit.net/docs/layouts_blog.html#">3</a></li>
+					<li><a href="http://www.getuikit.net/docs/layouts_blog.html#">4</a></li>
+					<li><span>...</span></li>
+					<li><a href="http://www.getuikit.net/docs/layouts_blog.html#">20</a></li>
+					<li><a  style="font-size: 18px;" href="http://www.getuikit.net/docs/layouts_blog.html#"><i class="uk-icon-angle-right"></i></a></li>
+				</ul>
+			</section>
+			<aside class="uk-width-large-1-4">
+				<div class="uk-panel at-recommend">
+					<h3 class="uk-panel-title">特别推荐</h3>
+					<a class="style01" href="http://www.atecher.com/article/17"  target="_blank">
+						<h2 class="at-rec-title">程序员的幽默笑话</h2>
+						<p  class="at-rec-summary">我叫程序 本人苦逼男程一枚，异地恋。每次女友打电话问我在干啥，我都说在搞程序。 隔了一阵子我发现她状态改成“我真希望我叫程序…”  </p>
+					</a>
+				</div>
+				<div class="uk-panel at-panel-hot uk-width-medium-none">
+					<h3 class="uk-panel-title">热文</h3>
+					<ul class="uk-list">
+						<li><a href="http://www.getuikit.net/docs/layouts_blog.html#">不要浪费时间去写所谓的完美代码</a></li>
+						<li><a href="http://www.getuikit.net/docs/layouts_blog.html#">101个MySQL调试和优化技巧</a></li>
+						<li><a href="http://www.getuikit.net/docs/layouts_blog.html#">101个MySQL调试和优化技巧</a></li>
+						<li><a href="http://www.getuikit.net/docs/layouts_blog.html#">101个MySQL调试和优化技巧</a></li>
+						<li><a href="http://www.getuikit.net/docs/layouts_blog.html#">101个MySQL调试和优化技巧</a></li>
+					</ul>
+				</div>
+
+				<div class="uk-panel at-panel-tag uk-margin-bottom">
+					<h3 class="uk-panel-title">热门标签</h3>
+					<ul class="uk-list">
+						<li><a  href="http://www.atecher.com/tag/progammer">程序猿 (6)</a></li>
+						<li><a  href="http://www.atecher.com/tag/devskills"> 编程技巧 (5) </a></li>
+						<li><a  href="http://www.atecher.com/tag/success">升职 (2)</a></li>
+						<li><a  href="http://www.atecher.com/tag/letv">乐视 (2)</a></li>
+						<li><a  href="http://www.atecher.com/tag/tv">智能电视 (2)</a></li>
+						<li><a  href="http://www.atecher.com/tag/internet">互联网 (2)</a></li>
+						<li><a  href="http://www.atecher.com/tag/%E4%BC%98%E5%8C%96">优化 (1)</a>
+						</li><li><a  href="http://www.atecher.com/tag/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库 (1)</a></li>
+						<li><a  href="http://www.atecher.com/tag/Mysql">Mysql (1)</a></li>
+						<li><a  href="http://www.atecher.com/tag/debug">debug (1)</a></li>
+						<li><a  href="http://www.atecher.com/tag/Linux">Linux (1)</a></li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+
+	</div>
+</div>
+<footer class="at-footer">
+	<div class="uk-container uk-container-center uk-text-center">
+		<ul class="uk-subnav uk-subnav-line uk-flex-center">
+			<li><a href="#"> 关于我们</a></li>
+			<li><a href="#">联系我们</a></li>
+			<li><a href="#">网站公告</a></li>
+			<li><a href="#">网站地图</a></li>
+		</ul>
+		<div class="uk-panel">
+			<p> Copyright © 2015AtecherAll Rights Reserved 备案号：京ICP备15011567号</p>
+		</div>
+
+	</div>
+</footer>
+<div id="offcanvas" class="uk-offcanvas">
+	<div class="uk-offcanvas-bar">
+		<ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav="{multiple:true}">
+			<li class="uk-nav-header">Core</li>
+			<li class="uk-parent"><a href="#">UIkit 中文文档</a>
+				<ul class="uk-nav-sub">
+					<li><a href="documentation_get-started.html">开始使用</a></li>
+					<li><a href="documentation_how-to-customize.html">如何定制</a></li>
+				</ul>
+			</li>
+
+			<li class="uk-parent"><a href="#"> <i class="uk-icon-wrench"></i>  默认</a>
+				<ul class="uk-nav-sub">
+					<li><a href="base.html">基础</a></li>
+				</ul>
+			</li>
+			<li class="uk-parent"><a href="#"> <i class="uk-icon-th-large"></i> 布局类组件</a>
+				<ul class="uk-nav-sub">
+					<li><a href="grid.html">网格</a></li>
+					<li><a href="panel.html">面板</a></li>
+					<li><a href="block.html">块</a></li>
+				</ul>
+			</li>
+			<li class="uk-nav-divider"></li>
+			<li><a href="../showcase/index.html">案例展示</a></li>
+			<li><a href="tutorials.html">视频教程</a></li>
+		</ul>
+
+	</div>
+</div>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script type="application/javascript" src="../asset/website/js/uikit.min.js"></script>
+<script type="application/javascript" src="../asset/website/js/components/sticky.min.js"></script>
+<script type="application/javascript" src="../asset/website/js/components/slideshow.min.js"></script>
+<script type="application/javascript" src="../asset/website/js/components/slideshow-fx.min.js"></script>
+<script type="application/javascript" src="../asset/website/custom/custom.js"></script>
+</body>
+</html>

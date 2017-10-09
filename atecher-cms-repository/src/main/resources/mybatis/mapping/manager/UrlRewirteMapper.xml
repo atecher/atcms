@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atecher.cms.mapper.manager.UrlRewirteMapper">
+
+	<sql id="select_urlrewrite_base" >
+		select  u.id, u.url_from urlFrom,u.url_to urlTo,u.url_to_type urlToType FROM sys_urlrewrite u
+	</sql>
+	<select id="list" resultType="com.atecher.cms.model.manager.RewriteRule">
+		<include refid="select_urlrewrite_base"/>
+	</select>
+	
+	<select id="queryUrlRewirteForPage" parameterType="map" resultType="com.atecher.cms.model.manager.RewriteRule">
+		<include refid="select_urlrewrite_base"/> where 1=1 
+		<if test="urlToType!=null and urlToType!=''">
+		and u.url_to_type=#{urlToType}
+		</if>
+	</select>
+	
+	<select id="queryUrlRewirteForPageCount" parameterType="map" resultType="int">
+		select  count(1) FROM sys_urlrewrite u where 1=1
+		<if test="urlToType!=null and urlToType!=''">
+		and u.url_to_type=#{urlToType}
+		</if>
+	</select>
+	
+	<select id="getById" parameterType="long" resultType="com.atecher.cms.model.manager.RewriteRule">
+		<include refid="select_urlrewrite_base"/> where u.id=#{value}
+	</select>
+	
+	<select id="check" parameterType="string" resultType="com.atecher.cms.model.manager.RewriteRule">
+		<include refid="select_urlrewrite_base"/> where u.url_from=#{value}
+	</select>
+	<insert id="insert" parameterType="com.atecher.cms.model.manager.RewriteRule" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+		insert into sys_urlrewrite(url_from,url_to,url_to_type) values (#{urlFrom},#{urlTo},#{urlToType})
+	</insert>
+	<update id="update" parameterType="com.atecher.cms.model.manager.RewriteRule">
+		update sys_urlrewrite set url_from=#{urlFrom},url_to=#{urlTo},url_to_type=#{urlToType} where id=#{id}
+	</update>
+	<delete id="delete" parameterType="long">
+		delete from sys_urlrewrite where id=#{value}
+	</delete>
+</mapper>

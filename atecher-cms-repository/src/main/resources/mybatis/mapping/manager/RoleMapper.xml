@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atecher.cms.mapper.manager.RoleMapper" >
+  
+    <sql id="select_role_base">
+		SELECT t.role_id ,t.role_code,t.role_name ,t.role_desc 
+		FROM sys_role t where t.valid='1'
+	</sql>
+	  <select id="selectRoleForPage" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+    <include refid="select_role_base" />
+      <if test="search!= null" >
+        and t.role_name like '%${search}%' or t.role_desc  like '%${search}%'
+      </if>
+     <if test="sort != null" >
+        order by ${sort} ${order}
+      </if>
+     limit #{start},#{limit} 
+     
+  </select>
+  <select id="selectRoleForPageCount" parameterType="java.util.HashMap" resultType="int" >
+  	select count(1) from sys_role t  where t.valid='1'
+  	<if test="search!= null" >
+       and  t.role_name like '%${search}%' or t.role_desc  like '%${search}%'
+      </if>
+  </select>
+  
+  	<select id="getRole" parameterType="long" resultType="com.atecher.cms.model.manager.Role">
+		<include refid="select_role_base"/> and t.role_id=#{value}
+	</select>
+	
+	<insert id="insertRole" parameterType="com.atecher.cms.model.manager.Role" useGeneratedKeys="true" keyColumn="role_id" keyProperty="roleId">
+		insert into sys_role (
+			role_code,role_name,role_desc
+		)values(
+			#{role_code},#{role_name},#{role_desc}
+		)
+	</insert>
+	<update id="updateRole" parameterType="com.atecher.cms.model.manager.Role" >
+		update sys_role set role_name=#{role_name},role_desc=#{role_desc} where role_id=#{role_id}
+	</update>
+	
+	<update id="disableRole" parameterType="long">
+		update sys_role set valid='0' where role_id=#{value}
+	</update>
+</mapper>

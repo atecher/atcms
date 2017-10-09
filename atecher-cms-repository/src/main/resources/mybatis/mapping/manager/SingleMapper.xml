@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atecher.cms.mapper.manager.SingleMapper">
+    <sql id="selectSingleColumns">
+		SELECT s.id,s.type,s.title,s.content FROM sys_single s
+	</sql>
+
+    <update id="update" parameterType="map">
+		update sys_single set title=#{title}, content=#{content} where id=#{id}
+	</update>
+    <select id="queryForPage" parameterType="map" resultType="map">
+        <include refid="selectSingleColumns"/>
+        limit ${startRow},#{limit}
+    </select>
+    <select id="queryForPageCount" parameterType="map" resultType="int">
+		select count(1) from sys_single s
+	</select>
+
+    <select id="getById" parameterType="long" resultType="map">
+        <include refid="selectSingleColumns"/>
+        where s.id=#{id}
+    </select>
+
+    <select id="getByType" parameterType="string" resultType="map">
+        <include refid="selectSingleColumns"/>
+        where s.type=#{value}
+    </select>
+
+</mapper>
