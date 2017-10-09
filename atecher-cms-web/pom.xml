@@ -6,9 +6,9 @@
 		<artifactId>atecher-cms</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>atecher-cms-webapp</artifactId>
+	<artifactId>atecher-cms-web</artifactId>
 	<packaging>war</packaging>
-	<name>atecher-cms-webapp</name>
+	<name>atecher-cms-web</name>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
