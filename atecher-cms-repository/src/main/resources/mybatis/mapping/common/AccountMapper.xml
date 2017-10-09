@@ -39,7 +39,7 @@
    select 
     id, code, name, url, level, parentcode, fullcode, nodeorder, isleaf, icon,
     isvisible,#{userId} user_id
-    from sys_menu M
+    from sys_menu m
     where parentcode = #{parentCode} and exists(select rm.menucode from sys_user_role ur inner join sys_role_menu rm on ur.role_id=rm.roleid where ur.user_id=#{userId} AND rm.menucode= m.code)
   </select>
 </mapper>

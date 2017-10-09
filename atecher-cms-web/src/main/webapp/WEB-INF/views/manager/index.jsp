@@ -57,308 +57,78 @@
                     </li>
                     </c:forEach>
                     <li>
-                        <a href="#">
-                            <i class="fa fa-home"></i>
-                            <span class="nav-label">主页</span>
-                            <span class="fa arrow"></span>
-                        </a>
+                        <a href="${pageContext.request.contextPath}/asset/console/index.html#"><i class="fa fa-flask"></i> <span class="nav-label">UI元素</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/index_v1.html" data-index="0">主页示例一</a></li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/index_v2.html" data-index="5">主页示例二</a></li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/index_v3.html" data-index="6">主页示例三</a></li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/index_v4.html" data-index="7">主页示例四</a></li>
-                            <li><a href="http://www.zi-han.net/theme/hplus/index_v5.html" target="_blank">主页示例五</a></li>
-                        </ul>
-
-                    </li>
-                    <li>
-                        <a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/layouts.html" data-index="8"><i class="fa fa-columns"></i> <span class="nav-label">布局</span></a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa fa-bar-chart-o"></i>
-                            <span class="nav-label">统计图表</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level collapse">
-                            <li>
-                                <a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/graph_echarts.html" data-index="9">百度ECharts</a>
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/typography.html" data-index="56">排版</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/graph_flot.html" data-index="10">Flot</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/graph_morris.html" data-index="11">Morris.js</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html" data-index="12">Rickshaw</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/graph_peity.html" data-index="13">Peity</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/graph_sparkline.html" data-index="14">Sparkline</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/graph_metrics.html" data-index="15">图表组合</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="http://www.zi-han.net/theme/hplus/mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">信箱 </span><span class="label label-warning pull-right">16</span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/mailbox.html" data-index="16">收件箱</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/mail_detail.html" data-index="17">查看邮件</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/mail_compose.html" data-index="18">写信</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">表单</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/form_basic.html" data-index="19">基本表单</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/form_validate.html" data-index="20">表单验证</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/form_advanced.html" data-index="21">高级插件</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/form_wizard.html" data-index="22">表单向导</a>
-                            </li>
-                            <li>
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">文件上传 <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level collapse">
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/form_webuploader.html" data-index="23">百度WebUploader</a>
-                                    </li>
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/form_file_upload.html" data-index="24">DropzoneJS</a>
-                                    </li>
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/form_avatar.html" data-index="25">头像裁剪上传</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">编辑器 <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level collapse">
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/form_editors.html" data-index="26">富文本编辑器</a>
-                                    </li>
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/form_simditor.html" data-index="27">simditor</a>
-                                    </li>
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/form_markdown.html" data-index="28">MarkDown编辑器</a>
-                                    </li>
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/code_editor.html" data-index="29">代码编辑器</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/suggest.html" data-index="30">搜索自动补全</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/layerdate.html" data-index="31">日期选择器layerDate</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="http://www.zi-han.net/theme/hplus/index.html#"><i class="fa fa-desktop"></i> <span class="nav-label">页面</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/contacts.html" data-index="32">联系人</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/profile.html" data-index="33">个人资料</a>
-                            </li>
-                            <li>
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">项目管理 <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level collapse">
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/projects.html" data-index="34">项目</a>
-                                    </li>
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/project_detail.html" data-index="35">项目详情</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/teams_board.html" data-index="36">团队管理</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/social_feed.html" data-index="37">信息流</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/clients.html" data-index="38">客户管理</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/file_manager.html" data-index="39">文件管理器</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/calendar.html" data-index="40">日历</a>
-                            </li>
-                            <li>
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">博客 <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level collapse">
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/blog.html" data-index="41">文章列表</a>
-                                    </li>
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/article.html" data-index="42">文章详情</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/faq.html" data-index="43">FAQ</a>
-                            </li>
-                            <li>
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">时间轴 <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level collapse">
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/timeline.html" data-index="44">时间轴</a>
-                                    </li>
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/timeline_v2.html" data-index="45">时间轴v2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/pin_board.html" data-index="46">标签墙</a>
-                            </li>
-                            <li>
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">单据 <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level collapse">
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/invoice.html" data-index="47">单据</a>
-                                    </li>
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/invoice_print.html" data-index="48">单据打印</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/search_results.html" data-index="49">搜索结果</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/forum_main.html" data-index="50">论坛</a>
-                            </li>
-                            <li>
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">即时通讯 <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level collapse">
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/chat_view.html" data-index="51">聊天窗口</a>
-                                    </li>
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/webim.html" data-index="52">layIM</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">登录注册相关 <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level collapse">
-                                    <li><a href="http://www.zi-han.net/theme/hplus/login.html" target="_blank">登录页面</a>
-                                    </li>
-                                    <li><a href="http://www.zi-han.net/theme/hplus/login_v2.html" target="_blank">登录页面v2</a>
-                                    </li>
-                                    <li><a href="http://www.zi-han.net/theme/hplus/register.html" target="_blank">注册页面</a>
-                                    </li>
-                                    <li><a href="http://www.zi-han.net/theme/hplus/lockscreen.html" target="_blank">登录超时</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/404.html" data-index="53">404页面</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/500.html" data-index="54">500页面</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/empty_page.html" data-index="55">空白页</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="http://www.zi-han.net/theme/hplus/index.html#"><i class="fa fa-flask"></i> <span class="nav-label">UI元素</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/typography.html" data-index="56">排版</a>
-                            </li>
-                            <li>
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">字体图标 <span class="fa arrow"></span></a>
+                                <a href="${pageContext.request.contextPath}/asset/console/index.html#">字体图标 <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level collapse">
                                     <li>
-                                        <a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/fontawesome.html" data-index="57">Font Awesome</a>
+                                        <a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/fontawesome.html" data-index="57">Font Awesome</a>
                                     </li>
                                     <li>
-                                        <a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/glyphicons.html" data-index="58">Glyphicon</a>
+                                        <a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/glyphicons.html" data-index="58">Glyphicon</a>
                                     </li>
                                     <li>
-                                        <a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/iconfont.html" data-index="59">阿里巴巴矢量图标库</a>
+                                        <a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/iconfont.html" data-index="59">阿里巴巴矢量图标库</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">拖动排序 <span class="fa arrow"></span></a>
+                                <a href="${pageContext.request.contextPath}/asset/console/index.html#">拖动排序 <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level collapse">
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/draggable_panels.html" data-index="60">拖动面板</a>
+                                    <li><a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/draggable_panels.html" data-index="60">拖动面板</a>
                                     </li>
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/agile_board.html" data-index="61">任务清单</a>
+                                    <li><a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/agile_board.html" data-index="61">任务清单</a>
                                     </li>
                                 </ul>
                             </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/buttons.html" data-index="62">按钮</a>
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/buttons.html" data-index="62">按钮</a>
                             </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/tabs_panels.html" data-index="63">选项卡 &amp; 面板</a>
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/tabs_panels.html" data-index="63">选项卡 &amp; 面板</a>
                             </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/notifications.html" data-index="64">通知 &amp; 提示</a>
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/notifications.html" data-index="64">通知 &amp; 提示</a>
                             </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/badges_labels.html" data-index="65">徽章，标签，进度条</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/grid_options.html" data-index="66">栅格</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/plyr.html" data-index="67">视频、音频</a>
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/badges_labels.html" data-index="65">徽章，标签，进度条</a>
                             </li>
                             <li>
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">弹框插件 <span class="fa arrow"></span></a>
+                                <a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/grid_options.html" data-index="66">栅格</a>
+                            </li>
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/plyr.html" data-index="67">视频、音频</a>
+                            </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/asset/console/index.html#">弹框插件 <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level collapse">
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/layer.html" data-index="68">Web弹层组件layer</a>
+                                    <li><a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/layer.html" data-index="68">Web弹层组件layer</a>
                                     </li>
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/modal_window.html" data-index="69">模态窗口</a>
+                                    <li><a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/modal_window.html" data-index="69">模态窗口</a>
                                     </li>
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/sweetalert.html" data-index="70">SweetAlert</a>
+                                    <li><a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/sweetalert.html" data-index="70">SweetAlert</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">树形视图 <span class="fa arrow"></span></a>
+                                <a href="${pageContext.request.contextPath}/asset/console/index.html#">树形视图 <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level collapse">
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/jstree.html" data-index="71">jsTree</a>
+                                    <li><a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/jstree.html" data-index="71">jsTree</a>
                                     </li>
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/tree_view.html" data-index="72">Bootstrap Tree View</a>
+                                    <li><a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/tree_view.html" data-index="72">Bootstrap Tree View</a>
                                     </li>
-                                    <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/nestable_list.html" data-index="73">nestable</a>
+                                    <li><a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/nestable_list.html" data-index="73">nestable</a>
                                     </li>
                                 </ul>
                             </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/toastr_notifications.html" data-index="74">Toastr通知</a>
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/toastr_notifications.html" data-index="74">Toastr通知</a>
                             </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/diff.html" data-index="75">文本对比</a>
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/diff.html" data-index="75">文本对比</a>
                             </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/spinners.html" data-index="76">加载动画</a>
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/spinners.html" data-index="76">加载动画</a>
                             </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/widgets.html" data-index="77">小部件</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="http://www.zi-han.net/theme/hplus/index.html#"><i class="fa fa-table"></i> <span class="nav-label">表格</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/table_basic.html" data-index="78">基本表格</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/table_data_tables.html" data-index="79">DataTables</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/table_jqgrid.html" data-index="80">jqGrid</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/table_foo_table.html" data-index="81">Foo Tables</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/table_bootstrap.html" data-index="82">Bootstrap Table
-                                <span class="label label-danger pull-right">推荐</span></a>
+                            <li><a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/widgets.html" data-index="77">小部件</a>
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="http://www.zi-han.net/theme/hplus/index.html#"><i class="fa fa-picture-o"></i> <span class="nav-label">相册</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/basic_gallery.html" data-index="83">基本图库</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/carousel.html" data-index="84">图片切换</a>
-                            </li>
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/blueimp.html" data-index="85">Blueimp相册</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/css_animation.html" data-index="86"><i class="fa fa-magic"></i> <span class="nav-label">CSS动画</span></a>
-                    </li>
-                    <li>
-                        <a href="http://www.zi-han.net/theme/hplus/index.html#"><i class="fa fa-cutlery"></i> <span class="nav-label">工具 </span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/form_builder.html" data-index="87">表单构建器</a>
-                            </li>
-                        </ul>
-                    </li>
-
                 </ul>
             </div><div class="slimScrollBar" style="width: 4px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 956px; background: rgb(0, 0, 0);"></div><div class="slimScrollRail" style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.9; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div>
         </nav>
@@ -370,13 +140,13 @@
                     <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a></div>
                     <ul class="nav navbar-top-links navbar-right">
                         <li class="dropdown">
-                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="http://www.zi-han.net/theme/hplus/index.html#">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="${pageContext.request.contextPath}/asset/console/index.html#">
                                 <i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
                             </a>
                             <ul class="dropdown-menu dropdown-messages">
                                 <li class="m-t-xs">
                                     <div class="dropdown-messages-box">
-                                        <a href="http://www.zi-han.net/theme/hplus/profile.html" class="pull-left">
+                                        <a href="${pageContext.request.contextPath}/asset/console/profile.html" class="pull-left">
                                             <img alt="image" class="img-circle" src="${pageContext.request.contextPath}/asset/console/img/a7.jpg">
                                         </a>
                                         <div class="media-body">
@@ -390,7 +160,7 @@
                                 <li class="divider"></li>
                                 <li>
                                     <div class="dropdown-messages-box">
-                                        <a href="http://www.zi-han.net/theme/hplus/profile.html" class="pull-left">
+                                        <a href="${pageContext.request.contextPath}/asset/console/profile.html" class="pull-left">
                                             <img alt="image" class="img-circle" src="${pageContext.request.contextPath}/asset/console/img/a4.jpg">
                                         </a>
                                         <div class="media-body ">
@@ -404,7 +174,7 @@
                                 <li class="divider"></li>
                                 <li>
                                     <div class="text-center link-block">
-                                        <a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/mailbox.html" data-index="88">
+                                        <a class="J_menuItem" href="${pageContext.request.contextPath}/asset/console/mailbox.html" data-index="88">
                                             <i class="fa fa-envelope"></i> <strong> 查看所有消息</strong>
                                         </a>
                                     </div>
@@ -412,12 +182,12 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="http://www.zi-han.net/theme/hplus/index.html#">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="${pageContext.request.contextPath}/asset/console/index.html#">
                                 <i class="fa fa-bell"></i> <span class="label label-primary">8</span>
                             </a>
                             <ul class="dropdown-menu dropdown-alerts">
                                 <li>
-                                    <a href="http://www.zi-han.net/theme/hplus/mailbox.html">
+                                    <a href="${pageContext.request.contextPath}/asset/console/mailbox.html">
                                         <div>
                                             <i class="fa fa-envelope fa-fw"></i> 您有16条未读消息
                                             <span class="pull-right text-muted small">4分钟前</span>
@@ -426,7 +196,7 @@
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="http://www.zi-han.net/theme/hplus/profile.html">
+                                    <a href="${pageContext.request.contextPath}/asset/console/profile.html">
                                         <div>
                                             <i class="fa fa-qq fa-fw"></i> 3条新回复
                                             <span class="pull-right text-muted small">12分钟钱</span>
@@ -445,7 +215,7 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="http://www.zi-han.net/theme/hplus/index.html#">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="${pageContext.request.contextPath}/asset/console/index.html#">
                                个人设置
                             </a>
                             <ul class="dropdown-menu">
@@ -516,15 +286,15 @@
                 <ul class="nav nav-tabs navs-3">
 
                     <li class="active">
-                        <a data-toggle="tab" href="http://www.zi-han.net/theme/hplus/index.html#tab-1">
+                        <a data-toggle="tab" href="${pageContext.request.contextPath}/asset/console/index.html#tab-1">
                             <i class="fa fa-gear"></i> 主题
                         </a>
                     </li>
-                    <li class=""><a data-toggle="tab" href="http://www.zi-han.net/theme/hplus/index.html#tab-2">
+                    <li class=""><a data-toggle="tab" href="${pageContext.request.contextPath}/asset/console/index.html#tab-2">
                         通知
                     </a>
                     </li>
-                    <li><a data-toggle="tab" href="http://www.zi-han.net/theme/hplus/index.html#tab-3">
+                    <li><a data-toggle="tab" href="${pageContext.request.contextPath}/asset/console/index.html#tab-3">
                         项目进度
                     </a>
                     </li>
@@ -581,21 +351,21 @@
                             <div class="title">皮肤选择</div>
                             <div class="setings-item default-skin nb">
                                 <span class="skin-name ">
-                         <a href="http://www.zi-han.net/theme/hplus/index.html#" class="s-skin-0">
+                         <a href="${pageContext.request.contextPath}/asset/console/index.html#" class="s-skin-0">
                              默认皮肤
                          </a>
                     </span>
                             </div>
                             <div class="setings-item blue-skin nb">
                                 <span class="skin-name ">
-                        <a href="http://www.zi-han.net/theme/hplus/index.html#" class="s-skin-1">
+                        <a href="${pageContext.request.contextPath}/asset/console/index.html#" class="s-skin-1">
                             蓝色主题
                         </a>
                     </span>
                             </div>
                             <div class="setings-item yellow-skin nb">
                                 <span class="skin-name ">
-                        <a href="http://www.zi-han.net/theme/hplus/index.html#" class="s-skin-3">
+                        <a href="${pageContext.request.contextPath}/asset/console/index.html#" class="s-skin-3">
                             黄色/紫色主题
                         </a>
                     </span>
@@ -612,7 +382,7 @@
                         <div>
 
                             <div class="sidebar-message">
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">
+                                <a href="${pageContext.request.contextPath}/asset/console/index.html#">
                                     <div class="pull-left text-center">
                                         <img alt="image" class="img-circle message-avatar" src="${pageContext.request.contextPath}/asset/console/img/a1.jpg">
 
@@ -630,7 +400,7 @@
                                 </a>
                             </div>
                             <div class="sidebar-message">
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">
+                                <a href="${pageContext.request.contextPath}/asset/console/index.html#">
                                     <div class="pull-left text-center">
                                         <img alt="image" class="img-circle message-avatar" src="${pageContext.request.contextPath}/asset/console/img/a2.jpg">
                                     </div>
@@ -642,7 +412,7 @@
                                 </a>
                             </div>
                             <div class="sidebar-message">
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">
+                                <a href="${pageContext.request.contextPath}/asset/console/index.html#">
                                     <div class="pull-left text-center">
                                         <img alt="image" class="img-circle message-avatar" src="${pageContext.request.contextPath}/asset/console/img/a3.jpg">
 
@@ -660,7 +430,7 @@
                                 </a>
                             </div>
                             <div class="sidebar-message">
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">
+                                <a href="${pageContext.request.contextPath}/asset/console/index.html#">
                                     <div class="pull-left text-center">
                                         <img alt="image" class="img-circle message-avatar" src="${pageContext.request.contextPath}/asset/console/img/a4.jpg">
                                     </div>
@@ -673,7 +443,7 @@
                                 </a>
                             </div>
                             <div class="sidebar-message">
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">
+                                <a href="${pageContext.request.contextPath}/asset/console/index.html#">
                                     <div class="pull-left text-center">
                                         <img alt="image" class="img-circle message-avatar" src="${pageContext.request.contextPath}/asset/console/img/a8.jpg">
                                     </div>
@@ -686,7 +456,7 @@
                                 </a>
                             </div>
                             <div class="sidebar-message">
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">
+                                <a href="${pageContext.request.contextPath}/asset/console/index.html#">
                                     <div class="pull-left text-center">
                                         <img alt="image" class="img-circle message-avatar" src="${pageContext.request.contextPath}/asset/console/img/a7.jpg">
                                     </div>
@@ -698,7 +468,7 @@
                                 </a>
                             </div>
                             <div class="sidebar-message">
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">
+                                <a href="${pageContext.request.contextPath}/asset/console/index.html#">
                                     <div class="pull-left text-center">
                                         <img alt="image" class="img-circle message-avatar" src="${pageContext.request.contextPath}/asset/console/img/a3.jpg">
 
@@ -716,7 +486,7 @@
                                 </a>
                             </div>
                             <div class="sidebar-message">
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">
+                                <a href="${pageContext.request.contextPath}/asset/console/index.html#">
                                     <div class="pull-left text-center">
                                         <img alt="image" class="img-circle message-avatar" src="${pageContext.request.contextPath}/asset/console/img/a4.jpg">
                                     </div>
@@ -739,7 +509,7 @@
 
                         <ul class="sidebar-list">
                             <li>
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">
+                                <a href="${pageContext.request.contextPath}/asset/console/index.html#">
                                     <div class="small pull-right m-t-xs">9小时以后</div>
                                     <h4>市场调研</h4> 按要求接收教材；
 
@@ -751,7 +521,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">
+                                <a href="${pageContext.request.contextPath}/asset/console/index.html#">
                                     <div class="small pull-right m-t-xs">9小时以后</div>
                                     <h4>可行性报告研究报上级批准 </h4> 编写目的编写本项目进度报告的目的在于更好的控制软件开发的时间,对团队成员的 开发进度作出一个合理的比对
 
@@ -762,7 +532,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">
+                                <a href="${pageContext.request.contextPath}/asset/console/index.html#">
                                     <div class="small pull-right m-t-xs">9小时以后</div>
                                     <h4>立项阶段</h4> 东风商用车公司 采购综合综合查询分析系统项目进度阶段性报告武汉斯迪克科技有限公司
 
@@ -773,7 +543,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">
+                                <a href="${pageContext.request.contextPath}/asset/console/index.html#">
                                     <span class="label label-primary pull-right">NEW</span>
                                     <h4>设计阶段</h4>
                                     <!--<div class="small pull-right m-t-xs">9小时以后</div>-->
@@ -783,7 +553,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">
+                                <a href="${pageContext.request.contextPath}/asset/console/index.html#">
                                     <div class="small pull-right m-t-xs">9小时以后</div>
                                     <h4>拆迁阶段</h4> 科研项目研究进展报告 项目编号: 项目名称: 项目负责人:
 
@@ -795,7 +565,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">
+                                <a href="${pageContext.request.contextPath}/asset/console/index.html#">
                                     <div class="small pull-right m-t-xs">9小时以后</div>
                                     <h4>建设阶段 </h4> 编写目的编写本项目进度报告的目的在于更好的控制软件开发的时间,对团队成员的 开发进度作出一个合理的比对
 
@@ -806,7 +576,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="http://www.zi-han.net/theme/hplus/index.html#">
+                                <a href="${pageContext.request.contextPath}/asset/console/index.html#">
                                     <div class="small pull-right m-t-xs">9小时以后</div>
                                     <h4>获证开盘</h4> 编写目的编写本项目进度报告的目的在于更好的控制软件开发的时间,对团队成员的 开发进度作出一个合理的比对
 
