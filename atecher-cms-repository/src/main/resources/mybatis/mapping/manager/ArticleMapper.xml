@@ -140,11 +140,7 @@
 	<delete id="deleteTagsByArticleId" parameterType="long">
 		delete from con_article_tag where article_id=#{value}
 	</delete>
-	
-	<select id="countArticleTag" parameterType="long" resultType="int">
-		select count(1) from con_article_tag where tag_id=#{value}
-	</select>
-	
+
 	<!-- tag end -->
 	
 	

@@ -1,6 +1,7 @@
 package com.atecher.cms.service.search.impl;
 import com.atecher.cms.common.model.Page;
 import com.atecher.cms.common.repository.IGenericRepository;
+import com.atecher.cms.mapper.manager.ArticleMapper;
 import com.atecher.cms.model.manager.Article;
 import com.atecher.cms.service.search.ISearchService;
 import org.apache.lucene.analysis.Analyzer;
@@ -35,6 +36,8 @@ public class SearchServiceImpl implements ISearchService {
     Analyzer analyzer;
     @Autowired(required = false)
     IGenericRepository genericRepository;
+    @Autowired
+    ArticleMapper articleMapper;
     @Override
     public void buildIndexAll() throws IOException {
         indexWriter.deleteAll();
@@ -42,7 +45,7 @@ public class SearchServiceImpl implements ISearchService {
         int startRow=0;
         queryParam.put("limit", 100);
         queryParam.put("start", startRow);
-        List<Article> articles=genericRepository.selectList("com.atecher.cms.mapper.manager.ArticleMapper.selectArticleForPage", queryParam);
+        List<Article> articles=articleMapper.selectArticleForPage(queryParam);
         Document doc;
         while(articles.size()>0){
             for(Article article:articles){
@@ -61,7 +64,7 @@ public class SearchServiceImpl implements ISearchService {
             }
             startRow+=100;
             queryParam.put("start", startRow);
-            articles=genericRepository.selectList("com.atecher.cms.mapper.manager.ArticleMapper.selectArticleForPage", queryParam);
+            articles=articleMapper.selectArticleForPage(queryParam);
         }
         indexWriter.commit();
 

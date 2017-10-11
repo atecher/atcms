@@ -5,6 +5,8 @@ import com.atecher.cms.common.model.PaginationRequest;
 import com.atecher.cms.common.model.TreeNode;
 import com.atecher.cms.model.manager.Article;
 import com.atecher.cms.service.manager.IArticleService;
+import com.atecher.cms.service.manager.ICategoryService;
+import com.atecher.cms.service.manager.ITagService;
 import com.atecher.cms.web.common.GenericActionController;
 import com.atecher.cms.web.util.ResponseResult;
 import com.atecher.cms.web.util.WebForwardConstants;
@@ -35,6 +37,10 @@ public class ManagerArticleController extends GenericActionController{
 	private static final Logger logger = LoggerFactory.getLogger(ManagerArticleController.class);
 	@Autowired
 	private IArticleService articleService;
+	@Autowired
+	private ICategoryService categoryService;
+	@Autowired
+	private ITagService tagService;
 
 	/**
 	 * 描述：文章查询
@@ -57,7 +63,8 @@ public class ManagerArticleController extends GenericActionController{
 			params.put("order", pagination.getOrder());
 		}
 		params.put("search", search);
-		return articleService.selectForPage("com.atecher.cms.mapper.manager.ArticleMapper.selectArticleForPage", pagination.getPageNo(), pagination.getLimit(), params);
+
+		return articleService.selectArticleForPage(pagination.getPageNo(), pagination.getLimit(), params);
 	}
 	
 	@RequestMapping(value="/categoryTree",method=RequestMethod.POST)
@@ -65,21 +72,21 @@ public class ManagerArticleController extends GenericActionController{
 	public List<TreeNode> categoryTree(HttpServletRequest request) throws ParseException, IOException {
 		HashMap<String, Object> param= new HashMap<>(2);
 		param.put("code",-1);
-		return articleService.selectList("com.atecher.cms.mapper.manager.CategoryMapper.selectCategoryByParent", param);
+		return categoryService.selectCategoryByParent(param);
 	}
 	
 	@RequestMapping(value = "/add",method=RequestMethod.GET)
 	public String add(Model model) {	
 		logger.debug("正在创建文章");
-		model.addAttribute("tags", articleService.selectList("com.atecher.cms.mapper.manager.TagMapper.getHotTagsTop", 10));
+		model.addAttribute("tags", tagService.getHotTagsTop(10));
 		return WebForwardConstants.MANAGER_ARTICLE_EDIT;
 	}
 	
 	@RequestMapping(value = "/edit/{article_id}",method=RequestMethod.GET)
 	public String edit(@PathVariable("article_id") Long article_id,Model model) {
-		Article article=articleService.getOne("com.atecher.cms.mapper.manager.ArticleMapper.getArticle", article_id);
+		Article article=articleService.getArticle(article_id);
 		model.addAttribute("article", article);
-		model.addAttribute("tags", articleService.selectList("com.atecher.cms.mapper.manager.TagMapper.getHotTagsTop", 10));
+		model.addAttribute("tags", tagService.getHotTagsTop(10));
 		logger.debug("正在编辑ID为{}的文章", article.getArticle_id());
 		return WebForwardConstants.MANAGER_ARTICLE_EDIT;
 	}
@@ -110,14 +117,14 @@ public class ManagerArticleController extends GenericActionController{
 	@RequestMapping(value = "/remove/{article_id}",method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseResult delete(@PathVariable("article_id") Long article_id) throws IOException{
-		articleService.delete("com.atecher.cms.mapper.manager.ArticleMapper.deleteArticle", article_id);
+		articleService.deleteArticle(article_id);
 		return new ResponseResult("success");
 	}
 	
 	@RequestMapping(value = "/module/{article_id}",method = RequestMethod.GET)
 	public String moduleEdit(@PathVariable("article_id") Long article_id,Model model) throws IOException{
-		model.addAttribute("unselectModule", articleService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.getUnSelectedModule", article_id));
-		model.addAttribute("selectModule", articleService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.getSelectedModule", article_id));
+		model.addAttribute("unselectModule", articleService.getUnSelectedModule(article_id));
+		model.addAttribute("selectModule", articleService.getSelectedModule(article_id));
 		model.addAttribute("article_id", article_id);
 		return WebForwardConstants.MANAGER_ARTICLE_MODULE;
 	}
@@ -130,13 +137,13 @@ public class ManagerArticleController extends GenericActionController{
 	@RequestMapping(value = "/module/{article_id}",method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseResult moduleSave(@PathVariable("article_id") Long article_id,@RequestParam("module_ids") List<Long> module_ids) throws IOException{
-		articleService.delete("com.atecher.cms.mapper.manager.ArticleMapper.deleteModuleArticle", article_id);
+		articleService.deleteModuleArticle(article_id);
 		if(module_ids!=null){
 			Map<String,Object> map= new HashMap<>();
 			map.put("article_id", article_id);
 			for(Long module_id:module_ids){
 				map.put("module_id", module_id);
-				articleService.insert("com.atecher.cms.mapper.manager.ArticleMapper.insertModuleArticle", map);
+				articleService.insertModuleArticle(map);
 			}
 		}
 		return new ResponseResult("success");

@@ -1,10 +1,13 @@
 package com.atecher.cms.web.website;
 
 import com.atecher.cms.common.model.Page;
-import com.atecher.cms.common.service.IGenericService;
 import com.atecher.cms.model.manager.Article;
 import com.atecher.cms.model.manager.Category;
 import com.atecher.cms.model.manager.Tag;
+import com.atecher.cms.service.common.ICommonService;
+import com.atecher.cms.service.manager.IArticleService;
+import com.atecher.cms.service.manager.ITagService;
+import com.atecher.cms.service.website.IWebsiteService;
 import com.atecher.cms.web.common.GenericActionController;
 import com.atecher.cms.web.util.WebForwardConstants;
 import org.slf4j.Logger;
@@ -28,8 +31,14 @@ import java.util.*;
 public class WebsiteController extends GenericActionController{
 	private static final Logger logger = LoggerFactory.getLogger(WebsiteController.class);
 	@Autowired
-	private IGenericService genericService;
-	
+	private ICommonService commonService;
+	@Autowired
+	private IWebsiteService websiteService;
+	@Autowired
+	private IArticleService articleService;
+	@Autowired
+	private ITagService tagService;
+
 	@RequestMapping(value="/",method=RequestMethod.GET)
 	public String index(Model model) throws Exception {
 		return page(1,model);
@@ -37,17 +46,18 @@ public class WebsiteController extends GenericActionController{
 	@RequestMapping(value="/page/{pageNo}",method=RequestMethod.GET)
 	public String page(@PathVariable("pageNo") Integer page,Model model) throws Exception {
 		Map<String,Object> query= new HashMap<>();
-		Page<Article> pageInfo=genericService.selectForPage("com.atecher.cms.mapper.website.WebsiteMapper.queryArticleForPage", page,10, query);
+		Page<Article> pageInfo=websiteService.queryArticleForPage(page,10,query);
 		model.addAttribute("articleList", pageInfo.getRows());
 		model.addAttribute("page", page);
 		model.addAttribute("totalRows", pageInfo.getTotal());
 		model.addAttribute("displayRows", 10);
-		List<Map<String,Object>> modules=genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.getModulesByPosition", "index");
+		List<Map<String,Object>> modules=articleService.getModulesByPosition("index");
+
 		for(Map<String,Object> map:modules){
-			model.addAttribute((String)map.get("module_code"), genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.getModuleArticles", map));
+			model.addAttribute((String)map.get("module_code"), articleService.getModuleArticles(map));
 		}
-		model.addAttribute("hots", genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.hotArticle", null));
-		model.addAttribute("tags", genericService.selectList("com.atecher.cms.mapper.manager.TagMapper.getHotTagsTop", 20));
+		model.addAttribute("hots", articleService.hotArticle());
+		model.addAttribute("tags", tagService.getHotTagsTop(20));
 		return WebForwardConstants.FWD_WEBSITE_INDEX;
 	}
 
@@ -67,7 +77,7 @@ public class WebsiteController extends GenericActionController{
 
 	@RequestMapping(value="/category/{menuId}/page/{pageNo}",method=RequestMethod.GET)
 	public String categoryPage(@PathVariable("menuId") String menuId,@PathVariable("pageNo") Integer page, Model model) throws Exception {
-		Category category= genericService.getOne("com.atecher.cms.mapper.website.WebsiteMapper.getCategoryByPath", menuId);
+		Category category= websiteService.getCategoryByPath(menuId);
 		List<Category> nav= new ArrayList<>();
 		getCategoryNav(category, nav);
 		Collections.reverse(nav);
@@ -77,19 +87,19 @@ public class WebsiteController extends GenericActionController{
 		if(category!=null){
 			getCategoryList(category,categoryIds);
 			query.put("category_ids",categoryIds);
-			Page<Article> pageInfo=genericService.selectForPage("com.atecher.cms.mapper.website.WebsiteMapper.queryArticleForPage", page,10, query);
+			Page<Article> pageInfo=websiteService.queryArticleForPage(page,10,query);
 			model.addAttribute("articleList", pageInfo.getRows());
 			model.addAttribute("page", page);
 			model.addAttribute("totalRows", pageInfo.getTotal());
 			model.addAttribute("displayRows", 10);
 			model.addAttribute("menuId",menuId);
 			model.addAttribute("category", category);
-			List<Map<String,Object>> modules=genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.getModulesByPosition", "category");
+			List<Map<String,Object>> modules=articleService.getModulesByPosition("category");
 			for(Map<String,Object> map:modules){
-				model.addAttribute((String)map.get("module_code"), genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.getModuleArticles", map));
+				model.addAttribute((String)map.get("module_code"),articleService.getModuleArticles(map));
 			}
-			model.addAttribute("hots", genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.hotArticle", null));
-			model.addAttribute("tags", genericService.selectList("com.atecher.cms.mapper.manager.TagMapper.getHotTagsTop", 20));
+			model.addAttribute("hots", articleService.hotArticle());
+			model.addAttribute("tags", tagService.getHotTagsTop(20));
 			return WebForwardConstants.FWD_WEBSITE_CATEGORY;
 		}else{
 			return WebForwardConstants.REDIRECT_ROOT;
@@ -107,22 +117,22 @@ public class WebsiteController extends GenericActionController{
 	 */
 	@RequestMapping(value="/article/{article_id}",method=RequestMethod.GET)
 	public String article(@PathVariable("article_id") Long article_id,Model model,HttpServletRequest request,HttpServletResponse response) throws Exception {
-		Map<String,Object> map=getVisitorInfo(request, response);
-		map.put("article_id", article_id);
-		map.put("handle", "view");
-		if((Integer)genericService.getOne("com.atecher.cms.mapper.website.WebsiteMapper.checkVistorViewArticle", map)==0){
-			genericService.update("com.atecher.cms.mapper.website.WebsiteMapper.article_click_count", article_id);//点击量+1
-			genericService.insert("com.atecher.cms.mapper.website.WebsiteMapper.addVistorView", map);//点击量+1
+		Map<String,Object> vistorMap=getVisitorInfo(request, response);
+		vistorMap.put("article_id", article_id);
+		vistorMap.put("handle", "view");
+		if(websiteService.checkVistorViewArticle(vistorMap)==0){
+			websiteService.updateArticleClicks(article_id);//点击量+1
+			websiteService.addVistorView(vistorMap);//点击量+1
 		}
 		long start=System.currentTimeMillis();
-		model.addAttribute("article", genericService.getOne("com.atecher.cms.mapper.website.WebsiteMapper.getArticleById", article_id));
-		model.addAttribute("preNext", genericService.selectList("com.atecher.cms.mapper.website.WebsiteMapper.selectPreNextArticle", article_id));//上一篇下一篇文章
-		List<Map<String,Object>> modules=genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.getModulesByPosition", "category");
-		for(Map<String,Object> mmap:modules){
-			model.addAttribute((String)mmap.get("module_code"), genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.getModuleArticles", mmap));
+		model.addAttribute("article", websiteService.getArticleById(article_id));
+		model.addAttribute("preNext", websiteService.selectPreNextArticle(article_id));//上一篇下一篇文章
+		List<Map<String,Object>> modules=articleService.getModulesByPosition("category");
+		for(Map<String,Object> map:modules){
+			model.addAttribute((String)map.get("module_code"), articleService.getModuleArticles(map));
 		}
-		model.addAttribute("hots", genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.hotArticle", null));
-		model.addAttribute("tags", genericService.selectList("com.atecher.cms.mapper.manager.TagMapper.getHotTagsTop", 20));
+		model.addAttribute("hots", articleService.hotArticle());
+		model.addAttribute("tags", tagService.getHotTagsTop(20));
 
 		logger.info("文章页面生成使用了{}毫秒",System.currentTimeMillis()-start);
 		return WebForwardConstants.FWD_WEBSITE_DETAIL;
@@ -138,22 +148,20 @@ public class WebsiteController extends GenericActionController{
 	public String tagData(@PathVariable("tag") String tag, @PathVariable("pageNo") Integer page,Model model) throws Exception {
 		Map<String,Object> query= new HashMap<>();
 		int displayRows=10;
-		Tag tagObj=genericService.getOne("com.atecher.cms.mapper.manager.TagMapper.getTagByTag", tag);
+		Tag tagObj=tagService.getTagByTag(tag);
 		query.put("tag_id", tagObj!=null?tagObj.getId():-1);
-		Page<Article> pageInfo=genericService.selectForPage("com.atecher.cms.mapper.website.WebsiteMapper.queryArticleByTagForPage", page,displayRows, query);
+		Page<Article> pageInfo=websiteService.queryArticleByTagForPage(page,displayRows,query);
 		model.addAttribute("articleList", pageInfo.getRows());
 		model.addAttribute("page", page);
 		model.addAttribute("totalRows", pageInfo.getTotal());
 		model.addAttribute("displayRows", displayRows);
 		model.addAttribute("tag",tagObj);
-		model.addAttribute("hots", genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.hotArticle", null));
-		model.addAttribute("tags", genericService.selectList("com.atecher.cms.mapper.manager.TagMapper.getHotTagsTop", 20));
-		List<Map<String,Object>> modules=genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.getModulesByPosition", "category");
+		model.addAttribute("hots", articleService.hotArticle());
+		model.addAttribute("tags", tagService.getHotTagsTop(20));
+		List<Map<String,Object>> modules=articleService.getModulesByPosition("category");
 		for(Map<String,Object> map:modules){
-			model.addAttribute((String)map.get("module_code"), genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.getModuleArticles", map));
+			model.addAttribute((String)map.get("module_code"), articleService.getModuleArticles(map));
 		}
-		model.addAttribute("hots", genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.hotArticle", null));
-		model.addAttribute("tags", genericService.selectList("com.atecher.cms.mapper.manager.TagMapper.getHotTagsTop", 20));
 		return WebForwardConstants.FWD_WEBSITE_TAG;
 	}
 	
@@ -167,13 +175,13 @@ public class WebsiteController extends GenericActionController{
 	 */
 	@RequestMapping(value="/single",method=RequestMethod.GET)
 	public String intruduction(@RequestParam("type") String type,Model model) throws Exception {
-		model.addAttribute("single", genericService.getOne("com.atecher.cms.mapper.manager.SingleMapper.getByType", type));
-		List<Map<String,Object>> modules=genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.getModulesByPosition", "category");
+		model.addAttribute("single", commonService.getSingleByType(type));
+		List<Map<String,Object>> modules=articleService.getModulesByPosition("category");
 		for(Map<String,Object> map:modules){
-			model.addAttribute((String)map.get("module_code"), genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.getModuleArticles", map));
+			model.addAttribute((String)map.get("module_code"), articleService.getModuleArticles(map));
 		}
-		model.addAttribute("hots", genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.hotArticle", null));
-		model.addAttribute("tags", genericService.selectList("com.atecher.cms.mapper.manager.TagMapper.getHotTagsTop", 20));
+		model.addAttribute("hots", articleService.hotArticle());
+		model.addAttribute("tags", tagService.getHotTagsTop(20));
 		return WebForwardConstants.FWD_WEBSITE_SINGLE;
 	}
 

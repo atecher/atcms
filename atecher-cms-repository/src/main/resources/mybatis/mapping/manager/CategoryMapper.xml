@@ -24,7 +24,7 @@
 		</if>
 	</sql>
 
-	<select id="queryCategoryList" parameterType="map" resultType="com.atecher.cms.model.manager.Category">
+	<select id="queryCategoryList"  resultType="com.atecher.cms.model.manager.Category">
 		select <include refid="category_column_list"/> from con_category c where c.valid='1'
 	</select>
 	<select id="selectCategoryForPage" parameterType="map" resultType="com.atecher.cms.model.manager.Category">

@@ -1,8 +1,8 @@
 package com.atecher.cms.web.manager;
 
 import com.atecher.cms.common.model.Page;
-import com.atecher.cms.common.service.IGenericService;
 import com.atecher.cms.model.manager.Category;
+import com.atecher.cms.service.manager.ICategoryService;
 import com.atecher.cms.web.common.GenericActionController;
 import com.atecher.cms.web.util.Constants;
 import com.atecher.cms.web.util.Message;
@@ -25,7 +25,7 @@ import java.util.HashMap;
 @RequestMapping(value = "/manage/category")
 public class ManagerCategoryController extends GenericActionController{
 	@Autowired
-	private IGenericService genericService;
+	private ICategoryService categoryService;
 	/**
 	 * 描述：查询分类信息
 	 * @作者 mark.han
@@ -51,7 +51,7 @@ public class ManagerCategoryController extends GenericActionController{
 			params.put("order", request.getParameter("order"));
 		}
 		params.put("search", request.getParameter("search"));
-		return genericService.selectForPage("com.atecher.cms.mapper.manager.CategoryMapper.selectCategoryForPage", pageNo, limit, params);
+		return categoryService.selectCategoryForPage(pageNo, limit, params);
 	}
 	
 	@RequestMapping(value = "/add")
@@ -67,8 +67,8 @@ public class ManagerCategoryController extends GenericActionController{
 	@RequestMapping(value = "/edit/{category_id}",method = RequestMethod.GET)
 	public String editCategory(@PathVariable("category_id") Integer category_id,Model model){
 		if(category_id!=null){
-			Category category=genericService.getOne("com.atecher.cms.mapper.manager.CategoryMapper.getCategory", category_id);
-			Category parent=genericService.getOne("com.atecher.cms.mapper.manager.CategoryMapper.getCategory", category.getParent_id());
+			Category category=categoryService.getCategory(category_id);
+			Category parent=categoryService.getCategory(category.getParent_id());
 			model.addAttribute("category",category);
 			model.addAttribute("parent",parent);
 		}
@@ -89,12 +89,12 @@ public class ManagerCategoryController extends GenericActionController{
 		if(category==null){
 			category=new Category();
 		}
-		if((Integer)genericService.getOne("com.atecher.cms.mapper.manager.CategoryMapper.checkCategoryPath", category)>0){
+		if(categoryService.checkCategoryPath(category)>0){
 			model.addAttribute(Constants.BIZ_MESS, Message.WARNING("错误提示：访问路径已经存在！"));
 			model.addAttribute("category",category);
 			return WebForwardConstants.MANAGER_CATEGORY_EDIT;
 		}
-		Category parent=genericService.getOne("com.atecher.cms.mapper.manager.CategoryMapper.getCategory", category.getParent_id());
+		Category parent=categoryService.getCategory(category.getParent_id());
 		if(parent!=null){
 			category.setCategory_level(parent.getCategory_level()+1);
 		}else{
@@ -102,9 +102,9 @@ public class ManagerCategoryController extends GenericActionController{
 		}
 		
 		if(category.getCategory_id()!=null){
-			genericService.update("com.atecher.cms.mapper.manager.CategoryMapper.updateCategory", category);
+			categoryService.updateCategory(category);
 		}else{
-			genericService.insert("com.atecher.cms.mapper.manager.CategoryMapper.insertCategory", category);
+			categoryService.insertCategory(category);
 		}
 		model.addAttribute(Constants.BIZ_MESS, Message.SUCCESS("成功提示：保存成功！"));
 		return editCategory(category.getCategory_id(), model);
@@ -112,7 +112,7 @@ public class ManagerCategoryController extends GenericActionController{
 	@RequestMapping(value = "/disable/{category_id}",method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseResult disableCategory(@PathVariable("category_id") Integer category_id){
-		int count=genericService.update("com.atecher.cms.mapper.manager.CategoryMapper.disableCategory",category_id);
+		int count=categoryService.disabledCategory(category_id);
 		if(count>=1){
 			return new ResponseResult("success");
 		}else{

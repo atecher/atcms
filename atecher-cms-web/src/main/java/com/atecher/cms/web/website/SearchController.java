@@ -3,6 +3,8 @@ package com.atecher.cms.web.website;
 import com.atecher.cms.common.model.Page;
 import com.atecher.cms.common.service.IGenericService;
 import com.atecher.cms.model.manager.Article;
+import com.atecher.cms.service.manager.IArticleService;
+import com.atecher.cms.service.manager.ITagService;
 import com.atecher.cms.service.search.ISearchService;
 import com.atecher.cms.web.common.GenericActionController;
 import com.atecher.cms.web.util.WebForwardConstants;
@@ -33,6 +35,10 @@ public class SearchController extends GenericActionController {
     @Autowired
     ISearchService searchService;
     @Autowired
+    IArticleService articleService;
+    @Autowired
+    ITagService tagService;
+    @Autowired
     private IGenericService genericService;
     @RequestMapping(method= RequestMethod.GET)
     public String index(@RequestParam("s") String searchText,Model model) throws Exception {
@@ -40,12 +46,12 @@ public class SearchController extends GenericActionController {
     }
     @RequestMapping("/page/{pageNo}")
     public String search(@RequestParam("s") String searchText, @PathVariable("pageNo") Integer page, Model model) throws Exception {
-        List<Map<String,Object>> modules=genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.getModulesByPosition", "category");
+        List<Map<String,Object>> modules=articleService.getModulesByPosition("category");
         for(Map<String,Object> map:modules){
-            model.addAttribute((String)map.get("module_code"), genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.getModuleArticles", map));
+            model.addAttribute((String)map.get("module_code"), articleService.getModuleArticles(map));
         }
-        model.addAttribute("hots", genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.hotArticle", null));
-        model.addAttribute("tags", genericService.selectList("com.atecher.cms.mapper.manager.TagMapper.getHotTagsTop", 20));
+        model.addAttribute("hots", articleService.hotArticle());
+        model.addAttribute("tags", tagService.getHotTagsTop(20));
         if(StringUtils.isNotEmpty(searchText)){
             try{
                 Page<Article> results=searchService.search(page,10,searchText);

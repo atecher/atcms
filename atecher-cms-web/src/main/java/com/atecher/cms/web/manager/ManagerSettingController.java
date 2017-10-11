@@ -1,6 +1,6 @@
 package com.atecher.cms.web.manager;
 
-import com.atecher.cms.common.service.IGenericService;
+import com.atecher.cms.service.common.ICommonService;
 import com.atecher.cms.service.search.ISearchService;
 import com.atecher.cms.web.common.GenericActionController;
 import com.atecher.cms.web.util.*;
@@ -25,7 +25,7 @@ public class ManagerSettingController extends GenericActionController{
 	@Autowired
 	private	ISearchService searchService;
 	@Autowired
-	private IGenericService genericService;
+	private ICommonService commonService;
 
 
 	@RequestMapping(value="/admin/setting",method = RequestMethod.GET)
@@ -35,7 +35,7 @@ public class ManagerSettingController extends GenericActionController{
 
 	@RequestMapping(value="/admin/profile",method = RequestMethod.GET)
 	public String create(Model model) throws IOException {
-		Map<String,Object> profileSetting=genericService.getOne("com.atecher.cms.mapper.manager.ProfileMapper.getProfile", null);
+		Map<String,Object> profileSetting=commonService.getProfile();
 		model.addAttribute("profile", profileSetting);
 		return WebForwardConstants.FWD_MANAGER_PROFILE;
 	}
@@ -52,9 +52,9 @@ public class ManagerSettingController extends GenericActionController{
 	@RequestMapping(value="/admin/profile",method = RequestMethod.POST)
 	public String update(Model model,HttpServletRequest request) throws IOException {
 		Map<String,Object> update=WebUtil.getQueryConditionStartWith(request, "profile_");
-		genericService.update("com.atecher.cms.mapper.manager.ProfileMapper.updateProfile", update);
+		commonService.updateProfile(update);
 		model.addAttribute(Constants.BIZ_MESS, Message.SUCCESS("成功提示：保存成功！"));
-		Map<String,Object> profileSetting=genericService.getOne("com.atecher.cms.mapper.manager.ProfileMapper.getProfile", null);
+		Map<String,Object> profileSetting=commonService.getProfile();
 		model.addAttribute("profile", profileSetting);
 		ServletContextUtil.readSystemSetting(request.getSession().getServletContext());
 		return WebForwardConstants.FWD_MANAGER_PROFILE;

@@ -1,6 +1,6 @@
 package com.atecher.cms.web.manager;
 
-import com.atecher.cms.common.service.IGenericService;
+import com.atecher.cms.service.common.ICommonService;
 import com.atecher.cms.web.util.FileInfo;
 import com.atecher.cms.web.util.WebForwardConstants;
 import org.apache.commons.codec.binary.Base64;
@@ -27,10 +27,10 @@ import java.util.List;
 @Controller
 public class ManagerResourceController{
 	@Autowired
-	private IGenericService genericService;
+	private ICommonService commonService;
 	@RequestMapping("/admin/resources")
 	public String  index(Model model){
-		List<HashMap<String, Object>> resourceRoots=genericService.selectList("com.atecher.cms.mapper.manager.CommonMapper.getResourceRoot", null);
+		List<HashMap<String, Object>> resourceRoots=commonService.getResourceRoot();
 		model.addAttribute("resourceRoots", resourceRoots);
 		return WebForwardConstants.FWD_MANAGER_RESOURCE;
 	}

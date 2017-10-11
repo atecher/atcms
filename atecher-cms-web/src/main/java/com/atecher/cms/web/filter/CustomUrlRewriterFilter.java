@@ -1,7 +1,7 @@
 package com.atecher.cms.web.filter;
 
-import com.atecher.cms.common.service.IGenericService;
 import com.atecher.cms.model.manager.RewriteRule;
+import com.atecher.cms.service.manager.IUrlRewirteService;
 import com.atecher.cms.web.util.Constants;
 import com.atecher.cms.web.util.UrlRewriterUtil;
 import org.springframework.context.ApplicationContext;
@@ -28,14 +28,14 @@ public class CustomUrlRewriterFilter extends UrlRewriteFilter {
         String urlRewiriterPath = context.getRealPath(confPath);
 
         ApplicationContext app = WebApplicationContextUtils.getWebApplicationContext(context);
-        IGenericService genericService = (IGenericService) app.getBean("genericService");
-        List<RewriteRule> list = genericService.selectList("com.atecher.cms.mapper.manager.UrlRewirteMapper.list", null);
+        IUrlRewirteService urlRewirteService = (IUrlRewirteService) app.getBean("urlRewirteService");
+        List<RewriteRule> list = urlRewirteService.list();
         Constants.updateProperties("URLREWIRITER_CONF_PATH", urlRewiriterPath);
         UrlRewriterUtil.rewriteConf(urlRewiriterPath, list);
         super.init(filterConfig);
     }
 
-    public void doFilter(final ServletRequest request,final ServletResponse response, final FilterChain chain) throws IOException, ServletException {
+    public void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain chain) throws IOException, ServletException {
         super.doFilter(request, response, chain);
     }
 

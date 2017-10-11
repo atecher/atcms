@@ -3,7 +3,6 @@ package com.atecher.cms.web.util.ueditor.define;
 import com.atecher.cms.web.util.ueditor.Encoder;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 public class BaseState implements State {

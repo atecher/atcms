@@ -52,7 +52,7 @@
 		<association property="parent"  column="parent_id"  select="getCategoryById" javaType="com.atecher.cms.model.manager.Category"/>
 		<collection property="children" column="category_id" select="getCategoryByParentId" ofType="com.atecher.cms.model.manager.Category"  />
 	</resultMap>
-	<update id="article_click_count" parameterType="long">
+	<update id="updateArticleClicks" parameterType="long">
 		update con_article_info set total_clicks=total_clicks+1 where article_id=#{value}
 	</update>
 	

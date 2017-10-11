@@ -19,7 +19,7 @@
     user_id, nick_name, reg_email, real_name, sex, birthday, last_login_time, 
     logins, valid, reg_time, summary, avatar
   </sql>
-    <select id="selectById" resultMap="userMap" parameterType="java.lang.Long">
+    <select id="getUser" resultMap="userMap" parameterType="java.lang.Long">
         select
         <include refid="user_column_list"/>
         from sys_user

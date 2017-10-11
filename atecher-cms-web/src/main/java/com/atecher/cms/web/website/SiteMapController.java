@@ -1,8 +1,10 @@
 package com.atecher.cms.web.website;
 
-import com.atecher.cms.common.service.IGenericService;
 import com.atecher.cms.model.manager.Category;
 import com.atecher.cms.model.manager.Tag;
+import com.atecher.cms.service.manager.IArticleService;
+import com.atecher.cms.service.manager.ICategoryService;
+import com.atecher.cms.service.manager.ITagService;
 import com.atecher.cms.web.common.GenericActionController;
 import com.atecher.cms.web.util.SiteMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +27,11 @@ import java.util.Map;
 @RequestMapping("/SiteMap.xml")
 public class SiteMapController extends GenericActionController {
     @Autowired
-    IGenericService genericService;
-
+    IArticleService articleService;
+    @Autowired
+    ICategoryService categoryService;
+    @Autowired
+    ITagService tagService;
     @RequestMapping(method= RequestMethod.GET)
     public void index(HttpServletRequest request, HttpServletResponse response) throws Exception {
         response.setCharacterEncoding("utf-8");
@@ -45,7 +50,7 @@ public class SiteMapController extends GenericActionController {
             //首页
             siteMap.addUrl(web_realm_name, new Date(), "daily", "1.0");
             //分类
-            List<Category> categories=genericService.selectList("com.atecher.cms.mapper.manager.CategoryMapper.queryCategoryList", null);
+            List<Category> categories=categoryService.queryCategoryList();
             for(Category category:categories){
                 siteMap.addUrl(web_realm_name+"/category/"+category.getCategory_path(), new Date(), "daily", "0.8");
             }
@@ -54,17 +59,17 @@ public class SiteMapController extends GenericActionController {
             int startRow=0;
             queryParam.put("limit", 100);
             queryParam.put("startRow", startRow);
-            List<Map<String,Object>> articles=genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.queryArticleMainForPage", queryParam);
+            List<Map<String,Object>> articles=articleService.queryArticleMainForPage(queryParam);
             while(articles.size()>0){
                 for(Map<String,Object> map:articles){
                     siteMap.addUrl(web_realm_name+"/article/"+map.get("article_id"), (Date)map.get("update_time"), "daily", "0.8");
                 }
                 startRow+=100;
                 queryParam.put("startRow", startRow);
-                articles=genericService.selectList("com.atecher.cms.mapper.manager.ArticleMapper.queryArticleMainForPage", queryParam);
+                articles=articleService.queryArticleMainForPage(queryParam);
             }
             //标签
-            List<Tag> list=genericService.selectList("com.atecher.cms.mapper.manager.TagMapper.selectTags", null);
+            List<Tag> list=tagService.selectTags();
             for(Tag tag:list){
                 siteMap.addUrl(web_realm_name+"/tag/"+tag.getCode(), new Date(), "daily", "0.8");
             }

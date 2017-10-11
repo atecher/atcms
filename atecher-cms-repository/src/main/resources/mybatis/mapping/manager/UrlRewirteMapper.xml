@@ -23,7 +23,7 @@
 		</if>
 	</select>
 	
-	<select id="getById" parameterType="long" resultType="com.atecher.cms.model.manager.RewriteRule">
+	<select id="get" parameterType="long" resultType="com.atecher.cms.model.manager.RewriteRule">
 		<include refid="select_urlrewrite_base"/> where u.id=#{value}
 	</select>
 	

@@ -1,11 +1,11 @@
 package com.atecher.cms.web.manager;
 
 import com.alibaba.fastjson.JSONObject;
-import com.atecher.cms.common.service.IGenericService;
 import com.atecher.cms.common.util.PasswordUtil;
 import com.atecher.cms.model.auth.AuthUser;
 import com.atecher.cms.model.manager.User;
 import com.atecher.cms.service.auth.IAccountService;
+import com.atecher.cms.service.manager.IUserService;
 import com.atecher.cms.web.common.GenericActionController;
 import com.atecher.cms.web.util.Constants;
 import com.atecher.cms.web.util.Message;
@@ -39,9 +39,8 @@ import java.util.UUID;
 @Controller
 public class ManagerUserCenterController extends GenericActionController{
 	private static final Logger logger = LoggerFactory.getLogger(ManagerUserCenterController.class);
-	private static final String GET_USER_KEY="com.atecher.cms.mapper.manager.UserMapper.selectById";
 	@Autowired
-	private IGenericService genericService;
+	private IUserService userService;
 	@Autowired
 	private IAccountService accountService;
 	/**
@@ -53,7 +52,7 @@ public class ManagerUserCenterController extends GenericActionController{
 	 */
 	@RequestMapping(value="/user",method=RequestMethod.GET)
 	public String index(Model model,HttpServletRequest request) throws Exception {
-		User user=genericService.getOne(GET_USER_KEY, getCurrentUserId(request));
+		User user=userService.getUser(getCurrentUserId(request));
 		model.addAttribute("user", user);
 		logger.info("访问用户中心");
 		return WebForwardConstants.FWD_MANAGER_HOME;
@@ -64,7 +63,7 @@ public class ManagerUserCenterController extends GenericActionController{
 	@RequestMapping(value = "/user/password", method = RequestMethod.GET)
 	public String password(Model model, HttpServletRequest request) throws Exception {
 		Long user_id = getCurrentUserId(request);
-		User user = genericService.getOne(GET_USER_KEY, user_id);
+		User user = userService.getUser(user_id);
 		model.addAttribute("user", user);
 		return WebForwardConstants.FWD_MANAGER_HOME;
 
@@ -81,7 +80,7 @@ public class ManagerUserCenterController extends GenericActionController{
 		if (user.getPassword().equals(PasswordUtil.passwordEncrypt(oldPasswd))) {
 			if (StringUtils.isNotEmpty(newPasswd) && newPasswd.equals(rePasswd)) {
 				user.setPassword(PasswordUtil.passwordEncrypt(newPasswd));
-				genericService.update("com.atecher.cms.mapper.manager.UserMapper.resetPassword", user);
+				userService.resetPassword(user);
 				model.addAttribute(Constants.BIZ_MESS, Message.SUCCESS("成功提示：密码重置成功！"));
 			}else{
 				json.put("message", "两次输入的密码不一致");
@@ -98,7 +97,7 @@ public class ManagerUserCenterController extends GenericActionController{
 
 	@RequestMapping(value = "/user/avatar", method = RequestMethod.GET)
 	public String avatar(Model model, HttpServletRequest request) throws Exception {
-		User user = genericService.getOne(GET_USER_KEY, getCurrentUserId(request));
+		User user = userService.getUser(getCurrentUserId(request));
 		model.addAttribute("user", user);
 		return WebForwardConstants.FWD_MANAGER_HOME_AVATAR;
 	}
@@ -129,7 +128,7 @@ public class ManagerUserCenterController extends GenericActionController{
                 Map<String, Object> imageMap = new HashMap<>();
                 imageMap.put("user_id", user_id);
                 imageMap.put("avatar", url);
-                int success=genericService.update("com.atecher.cms.mapper.manager.UserMapper.updateAvatar", imageMap);
+                int success=userService.updateAvatar(imageMap);
 
                 AuthUser authUser = getCurrentUser(request);
                 authUser.setAvatar(url);

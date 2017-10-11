@@ -28,8 +28,8 @@ public class ManagerUserController{
 	
 	@RequestMapping(value="/roles/{user_id}",method = RequestMethod.GET)
 	public String  roles(@PathVariable("user_id") Long user_id,Model model){
-		model.addAttribute("ownRoles",userService.selectList("com.atecher.cms.mapper.manager.UserMapper.selectOwnRoles", user_id));
-		model.addAttribute("otherRoles",userService.selectList("com.atecher.cms.mapper.manager.UserMapper.selectOtherRoles", user_id));
+		model.addAttribute("ownRoles",userService.selectOwnRoles(user_id));
+		model.addAttribute("otherRoles",userService.selectOtherRoles(user_id));
 		return WebForwardConstants.FWD_MANAGER_USER_ROLE;
 	}
 	@RequestMapping(value="/add",method = RequestMethod.GET)
@@ -38,7 +38,7 @@ public class ManagerUserController{
 	}
 	@RequestMapping(value="/edit/{user_id}",method = RequestMethod.GET)
 	public String  edit(@PathVariable("user_id") Long userId,Model model){
-		User user=userService.getOne("com.atecher.cms.mapper.manager.UserMapper.selectById",userId);
+		User user=userService.getUser(userId);
 		model.addAttribute("user",user);
 		return WebForwardConstants.FWD_MANAGER_USER_EDIT;
 	}
@@ -64,12 +64,12 @@ public class ManagerUserController{
 			params.put("order", request.getParameter("order"));
 		}
 		params.put("search", request.getParameter("search"));
-		return userService.selectForPage("com.atecher.cms.mapper.manager.UserMapper.selectUserForPage", pageNo, limit, params);
+		return userService.selectUserForPage(pageNo, limit, params);
 	}
 	
 	@RequestMapping(value = "/remove/{user_id}",method=RequestMethod.GET)
 	public ResponseResult remove(@PathVariable("user_id") Long user_id){
-		userService.update("com.atecher.cms.mapper.manager.UserMapper.disableUser", user_id);
+		userService.disableUser(user_id);
 		return new ResponseResult("success");
 	}
 }
