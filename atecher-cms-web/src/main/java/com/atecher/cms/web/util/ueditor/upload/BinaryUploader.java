@@ -83,7 +83,7 @@ public class BinaryUploader {
 			return storageState;
 		} catch (FileUploadException e) {
 			return new BaseState(false, AppInfo.PARSE_REQUEST_ERROR);
-		} catch (IOException e) {
+		} catch (IOException ignored) {
 		}
 		return new BaseState(false, AppInfo.IO_ERROR);
 	}

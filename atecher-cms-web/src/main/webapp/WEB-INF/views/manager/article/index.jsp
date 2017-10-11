@@ -11,6 +11,7 @@
     <link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/bootstrap-table/1.9.0/bootstrap-table.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/asset/console/css/plugins/iCheck/custom.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/asset/console/css/style.min.css" rel="stylesheet"/>
 </head>
 <body class="gray-bg">

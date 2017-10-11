@@ -106,10 +106,7 @@ public class ApplicationMonitor {
 		}
 		usedNonHeapMemory = ManagementFactory.getMemoryMXBean().getNonHeapMemoryUsage().getUsed()/(1024*1024);
 		loadedClassesCount = ManagementFactory.getClassLoadingMXBean().getLoadedClassCount();
-		
-		/**
-		 * 进程
-		 */
+
 		availableProcessors = Runtime.getRuntime().availableProcessors();
 		javaName=System.getProperty("java.runtime.name");
 		javaVersion =System.getProperty("java.runtime.version");

@@ -31,7 +31,7 @@ public class WebUtil {
 	
 	public static String buildUrlParamString(HttpServletRequest request, String prefix){
 		Map<String, Object> queryCondition =getQueryConditionStartWith(request,prefix);
-		StringBuffer sb=new StringBuffer();
+		StringBuilder sb=new StringBuilder();
 		Iterator<Entry<String, Object>> entryIterator= queryCondition.entrySet().iterator();
 		while (entryIterator.hasNext()) {
 			Entry<String, Object> entry=entryIterator.next();

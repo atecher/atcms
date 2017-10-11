@@ -57,7 +57,7 @@ public class ManagerUserController{
 		int index = request.getParameter("offset") == null ? 0 : Integer.parseInt(request.getParameter("offset"));
 		int limit = request.getParameter("limit") == null ? 10 : Integer.parseInt(request.getParameter("limit"));
 		int pageNo=index/limit+1;
-		HashMap<String, Object> params=new HashMap<String, Object>();
+		HashMap<String, Object> params= new HashMap<>();
 		String sort=request.getParameter("sort");
 		if(!StringUtils.isEmpty(sort)){
 			params.put("sort", sort);

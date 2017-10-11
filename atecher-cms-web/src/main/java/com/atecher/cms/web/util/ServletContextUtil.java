@@ -15,11 +15,9 @@ public class ServletContextUtil {
 		IGenericService genericService=(IGenericService)app.getBean("genericService");
 		Map<String,Object> profileSetting=genericService.getOne("com.atecher.cms.mapper.manager.ProfileMapper.getProfile", null);
 		List<Map<String,String>> constants=genericService.selectList("com.atecher.cms.mapper.manager.ProfileMapper.getConstants", null);
-		Iterator<Entry<String, Object>> its=profileSetting.entrySet().iterator();
-		while(its.hasNext()){
-			Entry<String, Object> en=its.next();
-			context.setAttribute((String)en.getKey(), en.getValue());
-			Constants.updateProperties((String)en.getKey(), (String)en.getValue());
+		for (Entry<String, Object> en : profileSetting.entrySet()) {
+			context.setAttribute((String) en.getKey(), en.getValue());
+			Constants.updateProperties((String) en.getKey(), (String) en.getValue());
 		}
 		for(Map<String,String> map:constants){
 			Constants.updateProperties(map.get("profile_key"), map.get("profile_value"));

@@ -50,7 +50,7 @@ public class SiteMapController extends GenericActionController {
                 siteMap.addUrl(web_realm_name+"/category/"+category.getCategory_path(), new Date(), "daily", "0.8");
             }
             //文章
-            Map<String,Object> queryParam=new HashMap<String, Object>();
+            Map<String,Object> queryParam= new HashMap<>();
             int startRow=0;
             queryParam.put("limit", 100);
             queryParam.put("startRow", startRow);

@@ -33,7 +33,7 @@ public class ManagerUrlrewriteController extends GenericActionController{
 	@RequestMapping(value="/data",method = RequestMethod.POST)
 	@ResponseBody
 	public Page<RewriteRule> getUrlRewrites(PaginationRequest pagination,@RequestParam(value="search",required=false) String search) {	
-		HashMap<String, Object> params=new HashMap<String, Object>();
+		HashMap<String, Object> params= new HashMap<>();
 		String sort=pagination.getSort();
 		if(!StringUtils.isEmpty(sort)){
 			params.put("sort", sort);

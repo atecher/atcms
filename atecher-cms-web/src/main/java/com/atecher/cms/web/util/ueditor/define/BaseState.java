@@ -59,15 +59,13 @@ public class BaseState implements State {
 		StringBuilder builder = new StringBuilder();
 		
 		builder.append( "{\"state\": \"" + stateVal + "\"" );
-		
-		Iterator<String> iterator = this.infoMap.keySet().iterator();
-		
-		while ( iterator.hasNext() ) {
-			
-			key = iterator.next();
-			
-			builder.append( ",\"" + key + "\": \"" + this.infoMap.get(key) + "\"" );
-			
+
+		for (String s : this.infoMap.keySet()) {
+
+			key = s;
+
+			builder.append(",\"").append(key).append("\": \"").append(this.infoMap.get(key)).append("\"");
+
 		}
 		
 		builder.append( "}" );

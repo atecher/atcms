@@ -70,7 +70,7 @@ public class StorageManager {
 
             return state;
 
-        } catch (IOException e) {
+        } catch (IOException ignored) {
         }
         return new BaseState(false, AppInfo.IO_ERROR);
     }
@@ -100,7 +100,7 @@ public class StorageManager {
             }
 
             return state;
-        } catch (IOException e) {
+        } catch (IOException ignored) {
         }
         return new BaseState(false, AppInfo.IO_ERROR);
     }

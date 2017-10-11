@@ -10,7 +10,7 @@ import java.nio.file.Path;
 public class LuceneDirectoryFactoryBean{
 
 	private String indexPath;
-	public FSDirectory getFSDirectory() throws Exception {
+	public FSDirectory getFSDirectory() {
 		File indexDir=new File(indexPath);
 		Path path=indexDir.toPath();
 		try {
