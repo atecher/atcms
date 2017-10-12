@@ -21,7 +21,7 @@ public class GenericRepositoryImpl implements IGenericRepository {
 
     public <T> T getOne(String sql_key, Object obj) {
 
-        return (T) sqlSession.selectOne(sql_key, obj);
+        return  sqlSession.selectOne(sql_key, obj);
     }
 
     public <E> List<E> selectList(String sql_key, Object parameter) {

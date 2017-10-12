@@ -69,7 +69,7 @@ public class WebsiteServiceImpl implements IWebsiteService {
         if (total == 0) {
             return new Page<>(0, new ArrayList<Article>());
         } else {
-            return new Page(total, websiteMapper.queryArticleForPage(param));
+            return new Page<>(total, websiteMapper.queryArticleForPage(param));
         }
 
     }
@@ -83,7 +83,7 @@ public class WebsiteServiceImpl implements IWebsiteService {
         if (total == 0) {
             return new Page<>(0, new ArrayList<Article>());
         } else {
-            return new Page(total, websiteMapper.queryArticleForPage(param));
+            return new Page<>(total, websiteMapper.queryArticleForPage(param));
         }
     }
 

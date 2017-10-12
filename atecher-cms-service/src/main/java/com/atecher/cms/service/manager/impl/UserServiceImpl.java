@@ -45,7 +45,7 @@ public class UserServiceImpl  implements IUserService {
 		if (total == 0) {
 			return new Page<>(0, new ArrayList<HashMap<String,Object>>());
 		} else {
-			return new Page(total, userMapper.selectUserForPage(param));
+			return new Page<>(total, userMapper.selectUserForPage(param));
 		}
 	}
 

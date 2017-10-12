@@ -27,11 +27,11 @@ import java.util.Map;
 @RequestMapping("/SiteMap.xml")
 public class SiteMapController extends GenericActionController {
     @Autowired
-    IArticleService articleService;
+    private  IArticleService articleService;
     @Autowired
-    ICategoryService categoryService;
+    private ICategoryService categoryService;
     @Autowired
-    ITagService tagService;
+    private ITagService tagService;
     @RequestMapping(method= RequestMethod.GET)
     public void index(HttpServletRequest request, HttpServletResponse response) throws Exception {
         response.setCharacterEncoding("utf-8");

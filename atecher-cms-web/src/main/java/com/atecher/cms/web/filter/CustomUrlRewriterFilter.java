@@ -35,8 +35,4 @@ public class CustomUrlRewriterFilter extends UrlRewriteFilter {
         super.init(filterConfig);
     }
 
-    public void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain chain) throws IOException, ServletException {
-        super.doFilter(request, response, chain);
-    }
-
 }

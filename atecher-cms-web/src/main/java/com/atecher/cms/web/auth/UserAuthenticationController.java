@@ -63,7 +63,7 @@ public class UserAuthenticationController extends GenericActionController {
     	if(subject.isAuthenticated()){
     		setCurrentUser(request, (AuthUser)subject.getPrincipals().getPrimaryPrincipal());
     		SavedRequest savedRequest = WebUtils.getAndClearSavedRequest(request);
-    		 String successUrl=null;
+    		 String successUrl;
             if (savedRequest != null && savedRequest.getMethod().equalsIgnoreCase(AccessControlFilter.GET_METHOD)) {
                 successUrl = savedRequest.getRequestUrl();
             }else{
@@ -86,7 +86,7 @@ public class UserAuthenticationController extends GenericActionController {
     	subject.logout();
     	request.getSession().invalidate();
     	SavedRequest savedRequest = WebUtils.getSavedRequest(request);
-		 String forwardURI=null;
+		 String forwardURI;
        if (savedRequest != null && savedRequest.getMethod().equalsIgnoreCase(AccessControlFilter.GET_METHOD)) {
     	   forwardURI = savedRequest.getRequestUrl();
        }else{

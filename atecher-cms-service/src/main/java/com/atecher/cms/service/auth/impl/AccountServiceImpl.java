@@ -20,7 +20,7 @@ public class AccountServiceImpl implements IAccountService {
 	}
 	
 	public List<Menu> getMenus(Long userId){
-		HashMap<String, Object> query=new HashMap<String, Object>(2);
+		HashMap<String, Object> query= new HashMap<>(2);
 		query.put("parentCode", "system");
 		query.put("userId", userId);
 		return accountMapper.selectAuthMenuByParentCode(query);

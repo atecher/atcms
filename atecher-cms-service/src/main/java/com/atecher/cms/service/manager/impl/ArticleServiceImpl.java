@@ -82,9 +82,6 @@ public class ArticleServiceImpl extends GenericServiceImpl implements IArticleSe
 				conditionMap.put("sorted", sorted++);
 				articleMapper.insertPicture(conditionMap);
 			}
-			/**
-			 * 添加Tag
-			 */
 			articleMapper.deleteTagsByArticleId(article.getArticle_id());
 			String keywords=article.getKeywords();
 			if(StringUtils.isEmpty(keywords)){
@@ -125,7 +122,7 @@ public class ArticleServiceImpl extends GenericServiceImpl implements IArticleSe
 		if (total == 0) {
 			return new Page<>(0, new ArrayList<Article>());
 		} else {
-			return new Page(total, articleMapper.selectArticleForPage(param));
+			return new Page<>(total, articleMapper.selectArticleForPage(param));
 		}
 	}
 

@@ -33,11 +33,11 @@ import java.util.Map;
 public class SearchController extends GenericActionController {
     private  final Log log = LogFactory.getLog(SearchController.class);
     @Autowired
-    ISearchService searchService;
+    private ISearchService searchService;
     @Autowired
-    IArticleService articleService;
+    private IArticleService articleService;
     @Autowired
-    ITagService tagService;
+    private ITagService tagService;
     @Autowired
     private IGenericService genericService;
     @RequestMapping(method= RequestMethod.GET)

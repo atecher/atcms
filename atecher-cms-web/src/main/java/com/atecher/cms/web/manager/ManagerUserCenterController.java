@@ -76,14 +76,12 @@ public class ManagerUserCenterController extends GenericActionController{
 		String rePasswd = request.getParameter("user_rep_password");
 		AuthUser currentUser=getCurrentUser(request);
 		AuthUser user =accountService.getAuthUserByAccount(currentUser.getAccount());
-		JSONObject json = new JSONObject();
 		if (user.getPassword().equals(PasswordUtil.passwordEncrypt(oldPasswd))) {
 			if (StringUtils.isNotEmpty(newPasswd) && newPasswd.equals(rePasswd)) {
 				user.setPassword(PasswordUtil.passwordEncrypt(newPasswd));
 				userService.resetPassword(user);
 				model.addAttribute(Constants.BIZ_MESS, Message.SUCCESS("成功提示：密码重置成功！"));
 			}else{
-				json.put("message", "两次输入的密码不一致");
 				model.addAttribute(Constants.BIZ_MESS, Message.ERROR("两次输入的密码不一致"));
 			}
 		} else {
@@ -117,9 +115,7 @@ public class ManagerUserCenterController extends GenericActionController{
 			String fileNameNew = UUID.randomUUID().toString() + ".jpg" ;//
 			File f = new File(destFile.getAbsoluteFile() + File.separator + fileNameNew);
 			//如果当前文件已经存在了，就跳过。
-			if (f.exists()) {
-
-			}else{
+			if (!f.exists()){
 				avatar.transferTo(f);
 				f.createNewFile();
                 String url=dirPath+"/"+user_id+ File.separator + fileNameNew;
@@ -129,7 +125,6 @@ public class ManagerUserCenterController extends GenericActionController{
                 imageMap.put("user_id", user_id);
                 imageMap.put("avatar", url);
                 int success=userService.updateAvatar(imageMap);
-
                 AuthUser authUser = getCurrentUser(request);
                 authUser.setAvatar(url);
 			}

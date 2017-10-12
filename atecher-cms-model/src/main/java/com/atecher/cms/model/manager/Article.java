@@ -124,7 +124,7 @@ public class Article implements Serializable {
 		if(keywords!=null&&!keywords.equals("")){
 			return Arrays.asList(keywords.split(","));
 		}else{
-			return new ArrayList<String>();
+			return new ArrayList<>();
 		}
 	}
 

@@ -14,10 +14,10 @@ import java.util.Map;
 /**
  * Created by hanhongwei on 2017/10/11.
  */
-@Service
+@Service("urlRewirteService")
 public class UrlRewirteServiceImpl implements IUrlRewirteService {
     @Autowired
-    UrlRewirteMapper urlRewirteMapper;
+    private UrlRewirteMapper urlRewirteMapper;
     @Override
     public List<RewriteRule> list() {
         return urlRewirteMapper.list();
@@ -31,7 +31,7 @@ public class UrlRewirteServiceImpl implements IUrlRewirteService {
         if (total == 0) {
             return new Page<>(0, new ArrayList<RewriteRule>());
         } else {
-            return new Page(total, urlRewirteMapper.queryUrlRewirteForPage(param));
+            return new Page<>(total, urlRewirteMapper.queryUrlRewirteForPage(param));
         }
     }
 

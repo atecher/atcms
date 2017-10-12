@@ -19,10 +19,8 @@ public class WebUtil {
 	}
 	
 	public static void putQueryConditionStartWith(HttpServletRequest request,Map<String, Object> queryCondition,String startString) {
-		Iterator<Entry<String, Object>> entryIterator= queryCondition.entrySet().iterator();
-		while (entryIterator.hasNext()) {
-			Entry<String, Object> entry=entryIterator.next();
-			request.setAttribute(startString+entry.getKey(), entry.getValue());
+		for (Entry<String, Object> entry : queryCondition.entrySet()) {
+			request.setAttribute(startString + entry.getKey(), entry.getValue());
 		}
 	}
 	public static void putQueryConditionStartWith(HttpServletRequest request,Map<String, Object> queryCondition) {
@@ -32,11 +30,9 @@ public class WebUtil {
 	public static String buildUrlParamString(HttpServletRequest request, String prefix){
 		Map<String, Object> queryCondition =getQueryConditionStartWith(request,prefix);
 		StringBuilder sb=new StringBuilder();
-		Iterator<Entry<String, Object>> entryIterator= queryCondition.entrySet().iterator();
-		while (entryIterator.hasNext()) {
-			Entry<String, Object> entry=entryIterator.next();
+		for (Entry<String, Object> entry : queryCondition.entrySet()) {
 			sb.append("&");
-			sb.append(prefix+entry.getKey());
+			sb.append(prefix + entry.getKey());
 			sb.append("=");
 			sb.append(entry.getValue());
 		}

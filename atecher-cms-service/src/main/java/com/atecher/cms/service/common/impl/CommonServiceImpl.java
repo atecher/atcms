@@ -12,10 +12,10 @@ import java.util.Map;
 /**
  * Created by hanhongwei on 2017/10/11.
  */
-@Service
+@Service("commonService")
 public class CommonServiceImpl implements ICommonService {
     @Autowired
-    CommonMapper commonMapper;
+    private CommonMapper commonMapper;
     @Override
     public List<HashMap<String, Object>> getResourceRoot() {
         return commonMapper.getResourceRoot();

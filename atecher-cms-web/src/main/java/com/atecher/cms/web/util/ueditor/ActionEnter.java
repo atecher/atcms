@@ -46,7 +46,7 @@ public class ActionEnter {
 		
 		int actionCode = ActionMap.getType( this.actionType );
 		
-		Map<String, Object> conf = null;
+		Map<String, Object> conf;
 		
 		switch ( actionCode ) {
 		

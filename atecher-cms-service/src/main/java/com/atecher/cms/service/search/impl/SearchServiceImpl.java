@@ -31,13 +31,11 @@ import java.util.*;
 public class SearchServiceImpl implements ISearchService {
 
     @Autowired(required = false)
-    IndexWriter indexWriter;
+    private IndexWriter indexWriter;
     @Autowired(required = false)
-    Analyzer analyzer;
-    @Autowired(required = false)
-    IGenericRepository genericRepository;
+    private Analyzer analyzer;
     @Autowired
-    ArticleMapper articleMapper;
+    private ArticleMapper articleMapper;
     @Override
     public void buildIndexAll() throws IOException {
         indexWriter.deleteAll();
@@ -103,10 +101,8 @@ public class SearchServiceImpl implements ISearchService {
                 item.setCover_path(d.get("cover_path"));
 				list.add(item);
 			}
-        } catch (IOException e) {
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
-        } catch (ParseException ex) {
-            ex.printStackTrace();
         } catch (InvalidTokenOffsetsException exe) {
             exe.printStackTrace();
         }

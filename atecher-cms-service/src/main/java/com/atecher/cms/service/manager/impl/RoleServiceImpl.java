@@ -16,7 +16,7 @@ import java.util.HashMap;
 @Service
 public class RoleServiceImpl implements IRoleService {
     @Autowired
-    RoleMapper roleMapper;
+    private RoleMapper roleMapper;
     @Override
     public Page<HashMap<String, Object>> selectRoleForPage(int pageNo, int limit, HashMap<String, Object> param) {
         param.put("start", (pageNo - 1) * limit);
@@ -25,7 +25,7 @@ public class RoleServiceImpl implements IRoleService {
         if (total == 0) {
             return new Page<>(0, new ArrayList<HashMap<String,Object>>());
         } else {
-            return new Page(total, roleMapper.selectRoleForPage(param));
+            return new Page<>(total, roleMapper.selectRoleForPage(param));
         }
     }
 

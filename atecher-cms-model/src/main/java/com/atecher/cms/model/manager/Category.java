@@ -17,7 +17,7 @@ public class Category implements Serializable {
 	private Integer category_level;
 	private Integer priority;
 	private Category parent;
-	private List<Category> children=new ArrayList<Category>();
+	private List<Category> children= new ArrayList<>();
 
 	
 	public void addChild(Category category){

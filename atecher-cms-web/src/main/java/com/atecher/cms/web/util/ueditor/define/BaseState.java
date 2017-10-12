@@ -57,7 +57,7 @@ public class BaseState implements State {
 		
 		StringBuilder builder = new StringBuilder();
 		
-		builder.append( "{\"state\": \"" + stateVal + "\"" );
+		builder.append("{\"state\": \"").append(stateVal).append("\"");
 
 		for (String s : this.infoMap.keySet()) {
 

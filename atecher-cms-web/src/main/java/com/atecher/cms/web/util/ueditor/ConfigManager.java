@@ -31,7 +31,7 @@ public final class ConfigManager {
     /*
      * 通过一个给定的路径构建一个配置管理器， 该管理器要求地址路径所在目录下必须存在config.properties文件
      */
-    private ConfigManager(String rootPath, String contextPath, String uri) throws FileNotFoundException, IOException {
+    private ConfigManager(String rootPath, String contextPath, String uri) throws IOException {
 
         this.rootPath = rootPath.substring(0, rootPath.length() - contextPath.length());
         this.contextPath = contextPath;

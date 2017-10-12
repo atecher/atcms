@@ -18,7 +18,7 @@ import java.util.Map;
 @Service
 public class CategoryServiceImpl implements ICategoryService {
     @Autowired
-    CategoryMapper categoryMapper;
+    private CategoryMapper categoryMapper;
     @Override
     public List<Category> queryCategoryList() {
         return categoryMapper.queryCategoryList();
@@ -31,7 +31,7 @@ public class CategoryServiceImpl implements ICategoryService {
         if (total == 0) {
             return new Page<>(0, new ArrayList<Category>());
         } else {
-            return new Page(total, categoryMapper.selectCategoryForPage(param));
+            return new Page<>(total, categoryMapper.selectCategoryForPage(param));
         }
     }
 
