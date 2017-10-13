@@ -100,6 +100,7 @@ public class SearchServiceImpl implements ISearchService {
                 item.setTotal_clicks(d.getField("total_clicks").numericValue().intValue());
                 item.setCover_path(d.get("cover_path"));
 				list.add(item);
+
 			}
         } catch (IOException | ParseException e) {
             e.printStackTrace();
