@@ -102,16 +102,15 @@ public class SearchServiceImpl implements ISearchService {
 				list.add(item);
 
 			}
-        } catch (IOException | ParseException e) {
+        } catch (IOException | ParseException | InvalidTokenOffsetsException e) {
             e.printStackTrace();
-        } catch (InvalidTokenOffsetsException exe) {
-            exe.printStackTrace();
         }
     return new Page<>(totals,list);
     }
 
     private String getHighlighter(Highlighter highlighter,String fieldName,String value) throws IOException, InvalidTokenOffsetsException {
-        TokenStream tokenStream = analyzer.tokenStream(fieldName, new StringReader(value)); //TokenStream用来分析文字流，按一定的规则罗列token,在lucene有字节流是即将要索引的文本，或者查询的关键字。
+        //TokenStream用来分析文字流，按一定的规则罗列token,在lucene有字节流是即将要索引的文本，或者查询的关键字。
+        TokenStream tokenStream = analyzer.tokenStream(fieldName, new StringReader(value));
         String res=highlighter.getBestFragment(tokenStream,value);
         if(res!=null&&!"".equals(res)){
             return res;
