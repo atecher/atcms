@@ -36,4 +36,8 @@
         description=#{description}
     </update>
 
+    <select id="getSingleByType" parameterType="string" resultType="map">
+        SELECT s.id,s.type,s.title,s.content FROM sys_single s where s.type=#{value}
+    </select>
+
 </mapper>

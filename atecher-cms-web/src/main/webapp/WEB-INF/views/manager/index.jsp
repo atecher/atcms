@@ -274,7 +274,7 @@
                 <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="${pageContext.request.contextPath}/admin/dashboard" frameborder="0" data-id="index_v1.html" seamless=""></iframe>
             </div>
             <div class="footer">
-                <div class="pull-right">© 2014-2015 <a href="http://www.zi-han.net/" target="_blank">zihan's blog</a>
+                <div class="pull-right">© 2014-2015 <a href="http://atecher.net/" target="_blank">Atecher's blog</a>
                 </div>
             </div>
         </div>

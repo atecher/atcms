@@ -84,12 +84,10 @@
                     <h5>联系信息</h5>
                 </div>
                 <div class="ibox-content">
-                    <p><i class="fa fa-send-o"></i> 博客：<a href="http://www.zi-han.net/" target="_blank">http://www.zi-han.net</a></p>
-                    <p><i class="fa fa-qq"></i> QQ：<a href="http://wpa.qq.com/msgrd?v=3&uin=516477188&site=qq&menu=yes" target="_blank">516477188</a>
-                    </p>
-                    <p><i class="fa fa-weixin"></i> 微信：<a href="javascript:;">zheng-zihan</a>
-                    </p>
-                    <p><i class="fa fa-credit-card"></i> 支付宝：<a href="javascript:;" class="支付宝信息">zheng-zihan@qq.com / *子涵</a>
+                    <p><i class="fa fa-send-o"></i> 博客：<a href="http://atecher.net/" target="_blank">http://atecher.net/</a></p>
+                    <p><i class="fa fa-qq"></i> QQ：<a href="http://wpa.qq.com/msgrd?v=3&uin=41050685&site=qq&menu=yes" target="_blank">41050685</a></p>
+                    <p><i class="fa fa-weixin"></i> 微信：<a href="javascript:;">HHoward</a></p>
+                    <p><i class="fa fa-github"></i>Github：<a href="https://github.com/atecher/" target="_blank">https://github.com/atecher/</a></p>
                     </p>
                 </div>
             </div>
