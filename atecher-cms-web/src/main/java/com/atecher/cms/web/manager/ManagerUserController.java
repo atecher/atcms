@@ -43,6 +43,8 @@ public class ManagerUserController{
 		return WebForwardConstants.FWD_MANAGER_USER_EDIT;
 	}
 
+
+
 	
 	@RequestMapping(value="/roles/{user_id}",method = RequestMethod.POST)
 	@ResponseBody

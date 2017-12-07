@@ -29,25 +29,19 @@
                             <input type="hidden" name="userId" value="${user.userId}"/>
                             <div class="panel-body">
                                 <div class="form-group">
+                                    <label class="col-sm-2 control-label">邮箱（作为登录账号）</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="regEmail" value="${user.regEmail}"  <c:if test="${not empty user.userId}">readonly</c:if>  placeholder="请输入邮箱，用于用户认证和密码接收..."/>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
                                     <label class="col-sm-2 control-label">昵称</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="nickName" value="${user.nickName}"   placeholder="请输入昵称"/>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">邮箱</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="regEmail" value="${user.regEmail}" placeholder="请输入邮箱，用于用户认证和密码接收..."/>
-                                    </div>
-                                </div>
-                                <div class="hr-line-dashed"></div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">角色描述</label>
-                                    <div class="col-sm-10">
-                                        <textarea  class="form-control" name="role_desc" placeholder="描述角色的职责范围..." style="min-height: 100px;">${role.role_desc}</textarea>
-                                    </div>
-                                </div>
                             </div>
 
                         </form>
@@ -60,7 +54,7 @@
                 <div class="ibox-title">
                     <h5>操作</h5>
                     <div class="ibox-tools">
-                        <button class="btn btn-primary btn-xs" id="returnList">返回角色列表</button>
+                        <button class="btn btn-primary btn-xs" id="returnList">返回用户列表</button>
                     </div>
                 </div>
                 <div class="ibox-content">
@@ -90,7 +84,7 @@
         $("#roleForm")[0].reset();
     });
     $("#returnList").click(function () {
-        window.location.href = "${pageContext.request.contextPath}/admin/role";
+        window.location.href = "${pageContext.request.contextPath}/admin/user";
     });
 </script>
 </body>

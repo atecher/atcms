@@ -75,6 +75,9 @@
 
     function operateFormatter(value, row, index) {
         return [
+            '<button class="edit  btn btn-warning btn-circle btn-tb" title="编辑">',
+            '<i class="fa fa-users"></i>',
+            '</button>  ',
             '<button class="role  btn btn-info btn-circle btn-tb" title="授权">',
             '<i class="fa fa-users"></i>',
             '</button>  ',
@@ -94,6 +97,9 @@
         return temp;
     }
     window.operateEvents = {
+        'click .edit': function (e, value, row, index) {
+            window.location.href="${pageContext.request.contextPath}/admin/user/edit/"+row.user_id;
+        },
         'click .role': function (e, value, row, index) {
             parent.layer.open({
                 type: 2,
