@@ -33,7 +33,7 @@
             <div class="sidebar-collapse" style="width: auto; height: 100%;">
                 <ul class="nav" id="side-menu">
                     <li class="nav-header">
-                        <div class="profile-element" style="margin-left: 20px;">
+                        <div class="profile-element" style="text-align: center;">
                             <span><img alt="image" class="img-circle" src="${website_current_user.avatar}" width="80" height="80" onerror="this.src='${pageContext.request.contextPath}/asset/console/img/a8.jpg'"></span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="http://www.zi-han.net/theme/hplus/index.html#">
                                 <span class="clear">
@@ -41,7 +41,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="logo-element">H+
+                        <div class="logo-element">At
                         </div>
                     </li>
                     <c:forEach items="${menu}" var="menu">
