@@ -25,12 +25,8 @@
                     <div class="example-wrap">
                         <div class="example">
                             <div class="hidden-xs" id="dataTableEventsToolbar" role="group">
-                                <button type="button" class="btn  btn-info  btn-bitbucket btn-circle" id="newUser">
-                                    <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
-                                </button>
-                                <button type="button" class="btn btn-danger  btn-bitbucket btn-circle">
-                                    <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
-                                </button>
+                                <button type="button" class="btn  btn-info  btn-bitbucket btn-circle" id="newUser"><i class="glyphicon glyphicon-plus" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-danger  btn-bitbucket btn-circle"><i class="glyphicon glyphicon-trash" aria-hidden="true"></i></button>
                             </div>
                             <table id="dataTableEvents"
                                    data-height="600" data-mobile-responsive="true"

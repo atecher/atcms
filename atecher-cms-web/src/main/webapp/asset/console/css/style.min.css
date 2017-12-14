@@ -17,3 +17,4 @@ h1,h2,h3,h4,h5,h6{font-weight:100}h1{font-size:30px}h2{font-size:24px}h3{font-si
 .page-tabs a.active{background-color:#f1f4f5;border-bottom-color:#f1f4f5;}
 .content-tabs .roll-left,.content-tabs .roll-right,.content-tabs .roll-right .dropdown{border-bottom:solid 1px #e4eaec;height:40px;}
 nav.page-tabs{background-color:transparent;height:40px;}
+.layui-layer-border{border-width: 0px;}

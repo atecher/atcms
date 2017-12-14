@@ -24,4 +24,8 @@ $(document).ready(function(){
 		}
 	});
 
+    $(".article-content img").error(function(){
+        $(this).attr('src', baseUrl+"/asset/website/custom/images/no_image.png");
+    });
+
 });

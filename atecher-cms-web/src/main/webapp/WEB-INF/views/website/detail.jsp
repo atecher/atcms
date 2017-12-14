@@ -9,6 +9,9 @@
     <meta name="keywords" content=" ${article.keywords}"/>
     <meta name="description" content="${article.summary}"/>
     <jsp:include page="common/head.jsp" flush="true"/>
+    <script>
+        var baseUrl="${pageContext.request.contextPath}";
+    </script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/asset/website/css/components/search.gradient.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/asset/website/custom/custom.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/asset/website/custom/share_style.css">
@@ -71,6 +74,6 @@
     </div>
 </div>
 <jsp:include page="common/foot.jsp" flush="true"/>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","weixin","tqq","qzone"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 <script type="application/javascript" src="${pageContext.request.contextPath}/asset/website/custom/custom.js"></script>
 </body></html>

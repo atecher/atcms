@@ -24,7 +24,7 @@
                 <c:forEach items="${articleList}" var="article">
                     <article class="uk-grid uk-article" >
                         <div class="uk-width-medium-1-4 uk-width-small-1-3 sidebar">
-                            <a class="thumbnail" href="${pageContext.request.contextPath}/article/${article.article_id}"><img width="660" height="400" alt="${article.title}" src="${article.cover_path}"></a>
+                            <a class="thumbnail" href="${pageContext.request.contextPath}/article/${article.article_id}"><img width="660" height="400" alt="${article.title}" src="${article.cover_path}" onerror="this.src='${pageContext.request.contextPath}/asset/website/custom/images/default.png'"></a>
                         </div>
                         <div class="uk-width-medium-3-4 uk-width-small-2-3">
                             <h2><a href="${pageContext.request.contextPath}/article/${article.article_id}">${article.title}</a></h2>

@@ -30,7 +30,7 @@
                                     <div class="uk-panel uk-panel-box at-slide-detail">
                                         <div class="uk-grid">
                                             <div class="uk-width-medium-2-5 uk-width-small-1-3">
-                                                <img src="${article.cover_path}" alt="${article.title}" width="320" height="240"/>
+                                                <img src="${article.cover_path}" alt="${article.title}" width="320" height="240" onerror="this.src='${pageContext.request.contextPath}/asset/website/custom/images/default.png'"/>
                                             </div>
                                             <div class="uk-width-medium-3-5 uk-width-small-2-3">
                                                 <h2 class="uk-panel-title"><a href="${pageContext.request.contextPath}/article/${article.article_id}">${article.title}</a></h2>
@@ -52,7 +52,7 @@
                     <c:forEach items="${articleList}" var="article">
                         <article class="uk-grid uk-article bounceInLeft animated" >
                             <div class="uk-width-medium-1-4 uk-width-small-1-3 sidebar">
-                                <a class="thumbnail" href="${pageContext.request.contextPath}/article/${article.article_id}"><img width="660" height="400" alt="${article.title}" src="${article.cover_path}"></a>
+                                <a class="thumbnail" href="${pageContext.request.contextPath}/article/${article.article_id}"><img width="660" height="400" alt="${article.title}" src="${article.cover_path}" onerror="this.src='${pageContext.request.contextPath}/asset/website/custom/images/default.png'"></a>
                             </div>
                             <div class="uk-width-medium-3-4 uk-width-small-2-3">
                                 <h2><a href="${pageContext.request.contextPath}/article/${article.article_id}">${article.title}</a></h2>
